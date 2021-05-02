@@ -1,9 +1,16 @@
 {
   "name": "sendle-node",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "keywords": [
+    "sendle",
+    "sendle-node",
+    "api",
+    "library",
+    "client"
+  ],
   "files": [
     "dist"
   ],
@@ -15,7 +22,7 @@
     "build": "tsdx build --target node",
     "test": "tsdx test --env=node",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "tsdx build --target node",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
