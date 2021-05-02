@@ -35,3 +35,15 @@ npm install sendle-node
 
   </code-block>
 </code-group>
+
+### Create a client
+
+```ts
+import { SendleClient } from 'sendle-node';
+
+const client = new SendleClient({
+  sendleId: 'yourSendleId',
+  apiKey: 'yourApiKey',
+  sandbox: true // default to false
+});
+```
