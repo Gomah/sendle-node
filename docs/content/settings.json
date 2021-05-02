@@ -1,0 +1,10 @@
+{
+  "title": "Node.js library for the Sendle API",
+  "url": "https://sendle-node.vercel.app",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "gomah/sendle-node",
+  "twitter": "@Gomah"
+}

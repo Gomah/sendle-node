@@ -1,0 +1,55 @@
+{
+  "name": "sendle-node",
+  "version": "0.1.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build --target node",
+    "test": "tsdx test --env=node",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "author": "Gomah",
+  "module": "dist/sendle-node.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/sendle-node.cjs.production.min.js",
+      "limit": "10 KB",
+      "webpack": false
+    },
+    {
+      "path": "dist/sendle-node.esm.js",
+      "limit": "10 KB",
+      "webpack": false
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "dotenv": "^8.2.0",
+    "husky": "^6.0.0",
+    "size-limit": "^4.10.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "hasha": "5.2.2",
+    "nanoid": "3.1.22"
+  }
+}
