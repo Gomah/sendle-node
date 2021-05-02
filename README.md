@@ -26,6 +26,20 @@ You need to be running at least Node.js 10 to use this library.
 $ yarn add sendle-node
 ```
 
+### Create a client
+
+```ts
+import { SendleClient } from 'sendle-node';
+
+const client = new SendleClient({
+  sendleId: 'yourSendleId',
+  apiKey: 'yourApiKey',
+  sandbox: true // default to false
+});
+```
+
+See the [docs](https://sendle-node.vercel.app) for usage reference.
+
 ## Development
 
 1. Clone this repository
