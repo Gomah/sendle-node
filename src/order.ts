@@ -1,7 +1,7 @@
-import { AxiosInstance } from 'axios';
-import hasha from 'hasha';
-import { nanoid } from 'nanoid';
-import { Sendle } from './types';
+import { AxiosInstance } from "axios";
+import hasha from "hasha";
+import { nanoid } from "nanoid";
+import { Sendle } from "./types";
 
 export class OrderResource {
   private client: AxiosInstance;
@@ -11,7 +11,9 @@ export class OrderResource {
   }
 
   async get(orderId: string): Promise<Sendle.Order | never> {
-    return this.client.get<Sendle.Order>(`/orders/${orderId}`).then(({ data }) => data);
+    return this.client
+      .get<Sendle.Order>(`/orders/${orderId}`)
+      .then(({ data }) => data);
   }
 
   async create(args: Sendle.OrderArgs): Promise<Sendle.Order | never> {
@@ -19,16 +21,17 @@ export class OrderResource {
     let { idempotencyKey } = args;
 
     if (!idempotencyKey) {
-      idempotencyKey = customerId && orderId ? hasha(`${customerId}-${orderId}`) : nanoid();
+      idempotencyKey =
+        customerId && orderId ? hasha(`${customerId}-${orderId}`) : nanoid();
     }
 
     return this.client
       .post<Sendle.Order>(`/orders`, args, {
         headers: {
-          'Idempotency-Key': idempotencyKey,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+          "Idempotency-Key": idempotencyKey,
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
       })
       .then(({ data }) => data);
   }
@@ -40,6 +43,8 @@ export class OrderResource {
    * `is_cancellable` is found in the `scheduling` section of the `JSON` along with delivery estimates.
    */
   async cancel(orderId: string): Promise<Sendle.CancelledOrder> {
-    return this.client.delete<Sendle.CancelledOrder>(`/orders/${orderId}`).then(({ data }) => data);
+    return this.client
+      .delete<Sendle.CancelledOrder>(`/orders/${orderId}`)
+      .then(({ data }) => data);
   }
 }

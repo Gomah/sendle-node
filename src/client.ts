@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from 'axios';
-import { Sendle } from './types';
-import { OrderResource } from './order';
+import axios, { AxiosInstance } from "axios";
+import { Sendle } from "./types";
+import { OrderResource } from "./order";
 
 export class SendleClient {
   private client: AxiosInstance;
@@ -9,27 +9,31 @@ export class SendleClient {
   constructor(options: Sendle.ClientOptions) {
     const { sandbox = false, sendleId, apiKey } = options;
 
-    const apiUrl = sandbox ? 'https://sandbox.sendle.com/api' : 'https://api.sendle.com/api';
+    const apiUrl = sandbox
+      ? "https://sandbox.sendle.com/api"
+      : "https://api.sendle.com/api";
 
     this.client = axios.create({
       auth: {
         username: sendleId,
-        password: apiKey,
+        password: apiKey
       },
-      baseURL: apiUrl,
+      baseURL: apiUrl
     });
 
     this.orders = new OrderResource(this.client);
   }
 
   async ping(): Promise<Sendle.PingResponse | never> {
-    return this.client.get<Sendle.PingResponse>('/ping').then(({ data }) => data);
+    return this.client
+      .get<Sendle.PingResponse>("/ping")
+      .then(({ data }) => data);
   }
 
   async quote(args: Sendle.QuoteArgs): Promise<Sendle.Quote | never> {
     return this.client
       .get<Array<Sendle.Quote>>(`/quote`, {
-        params: args,
+        params: args
       })
       .then(({ data }) => data[0]);
   }

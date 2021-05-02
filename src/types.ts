@@ -6,7 +6,7 @@ export namespace Sendle {
   }
 
   export interface PingResponse {
-    ping: 'pong';
+    ping: "pong";
     timestamp: string;
   }
 
@@ -23,15 +23,15 @@ export namespace Sendle {
    * Return – to Sender	An order which is being returned to the sender.
    */
   export type OrderState =
-    | 'Booking'
-    | 'Pickup'
-    | 'Pickup Attempted'
-    | 'Transit'
-    | 'Delivered'
-    | 'Cancelled'
-    | 'Unable to Book'
-    | 'Lost'
-    | 'Return to Sender';
+    | "Booking"
+    | "Pickup"
+    | "Pickup Attempted"
+    | "Transit"
+    | "Delivered"
+    | "Cancelled"
+    | "Unable to Book"
+    | "Lost"
+    | "Return to Sender";
 
   /**
    * Pickup	– Parcel successfully picked up.
@@ -44,14 +44,14 @@ export namespace Sendle {
    * Delivery Failed –	Delivery failed.
    */
   export type ScanEvent =
-    | 'Pickup'
-    | 'Info'
-    | 'In Transit'
-    | 'Delivered'
-    | 'Delivery Attempted'
-    | 'Card Left'
-    | 'Left with Agent'
-    | 'Delivery Failed';
+    | "Pickup"
+    | "Info"
+    | "In Transit"
+    | "Delivered"
+    | "Delivery Attempted"
+    | "Card Left"
+    | "Left with Agent"
+    | "Delivery Failed";
 
   export interface TrackingEvent {
     /**
@@ -189,7 +189,7 @@ export namespace Sendle {
      * String value under 255 characters in length.
      * If included, must read “Australia” or “United States”.
      */
-    country?: 'Australia' | 'United States' | string;
+    country?: "Australia" | "United States" | string;
   }
 
   export interface OrderArgs {
@@ -206,7 +206,7 @@ export namespace Sendle {
      * In the US, only drop off is available.
      * If `first_mile_option` is not specified, a default value of `pickup` will be used.
      */
-    first_mile_option?: 'pickup' | 'drop off';
+    first_mile_option?: "pickup" | "drop off";
 
     /**
      * Description is used by the customer to track the parcel on Sendle Dashboard.
@@ -372,7 +372,7 @@ export namespace Sendle {
      * If it contains null it means the labels are still being generated.
      * In which case, you will need to re-fetch the order with a GET request, or use the label endpoint described in the link above.
      */
-    labels: Array<{ format: 'pdf'; size: 'a4' | 'cropped'; url: string }>;
+    labels: Array<{ format: "pdf"; size: "a4" | "cropped"; url: string }>;
 
     /**
      * Information regarding the order’s delivery status and whether an order can be cancelled.
@@ -423,8 +423,8 @@ export namespace Sendle {
      */
     route: {
       description: string;
-      type: 'same-city' | 'national' | 'remote' | 'export';
-      delivery_guarantee_status?: 'eligible' | 'ineligible';
+      type: "same-city" | "national" | "remote" | "export";
+      delivery_guarantee_status?: "eligible" | "ineligible";
     };
 
     /**
@@ -433,22 +433,22 @@ export namespace Sendle {
     price: {
       tax: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
       gross: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
       net: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
     };
   }
 
   export interface CancelledOrder {
     order_id: string;
-    state: 'Cancelled';
+    state: "Cancelled";
     order_url: string;
     sendle_reference: string;
     tracking_url: string;
@@ -472,7 +472,7 @@ export namespace Sendle {
      * Sendle currently supports `AU` for Australia and `US` for United States.
      * If no `pickup_country` is provided this will default to `AU`.
      */
-    pickup_country?: 'AU' | 'US';
+    pickup_country?: "AU" | "US";
 
     /**
      * Suburb must be real and match delivery postcode.
@@ -489,7 +489,7 @@ export namespace Sendle {
      * Sendle currently supports `AU` for Australia and `US` for United States.
      * If no `pickup_country` is provided this will default to `AU`.
      */
-    delivery_country?: 'AU' | 'US';
+    delivery_country?: "AU" | "US";
 
     weight_value: string;
 
@@ -499,7 +499,7 @@ export namespace Sendle {
      * Whether the parcel will be picked up or dropped off.
      * `pickup` for parcels that are being picked up, or `drop off` for drop off (or US) parcels.
      */
-    first_mile_option?: 'drop off' | 'pickup';
+    first_mile_option?: "drop off" | "pickup";
 
     /**
      * Decimal string value of the volume.
@@ -520,7 +520,7 @@ export namespace Sendle {
        */
       gross: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
 
       /**
@@ -528,7 +528,7 @@ export namespace Sendle {
        */
       net: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
 
       /**
@@ -536,7 +536,7 @@ export namespace Sendle {
        */
       tax: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: "AUD" | "USD";
       };
     };
 
@@ -577,8 +577,8 @@ export namespace Sendle {
      */
     route: {
       description: string;
-      type: 'same-city' | 'national' | 'remote' | 'export';
-      delivery_guarantee_status?: 'eligible' | 'ineligible';
+      type: "same-city" | "national" | "remote" | "export";
+      delivery_guarantee_status?: "eligible" | "ineligible";
     };
   }
 }
