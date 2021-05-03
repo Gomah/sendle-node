@@ -70,6 +70,8 @@
     }
   ],
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@size-limit/preset-small-lib": "^4.10.2",
     "dotenv": "^8.2.0",
     "husky": "^6.0.0",
