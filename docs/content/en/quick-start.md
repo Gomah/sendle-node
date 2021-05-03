@@ -44,6 +44,6 @@ import { SendleClient } from 'sendle-node';
 const client = new SendleClient({
   sendleId: 'yourSendleId',
   apiKey: 'yourApiKey',
-  sandbox: true // default to false
+  sandbox: true, // default to false
 });
 ```

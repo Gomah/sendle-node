@@ -1,9 +1,15 @@
 {
   "name": "sendle-node",
+  "description": "Node.js library for the Sendle API",
   "version": "0.1.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "repository": "https://github.com/Gomah/sendle-node",
+  "homepage": "https://sendle-node.vercel.app",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "sendle",
     "sendle-node",
@@ -17,6 +23,12 @@
   "engines": {
     "node": ">=10"
   },
+  "prettier": {
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --target node",
@@ -24,10 +36,12 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build --target node",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "tsdx lint"
     }
   },
@@ -36,13 +50,23 @@
   "size-limit": [
     {
       "path": "dist/sendle-node.cjs.production.min.js",
-      "limit": "10 KB",
-      "webpack": false
+      "limit": "15 KB",
+      "ignore": [
+        "fs",
+        "path",
+        "crypto",
+        "worker_threads"
+      ]
     },
     {
       "path": "dist/sendle-node.esm.js",
-      "limit": "10 KB",
-      "webpack": false
+      "limit": "15 KB",
+      "ignore": [
+        "fs",
+        "path",
+        "crypto",
+        "worker_threads"
+      ]
     }
   ],
   "devDependencies": {

@@ -4,6 +4,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![Dependencies][david-dm-src]][david-dm-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-1a2b34.svg?style=flat-square)](https://prettier.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 # Sendle Node.js library
@@ -34,7 +35,7 @@ import { SendleClient } from 'sendle-node';
 const client = new SendleClient({
   sendleId: 'yourSendleId',
   apiKey: 'yourApiKey',
-  sandbox: true // default to false
+  sandbox: true, // default to false
 });
 ```
 
@@ -45,7 +46,7 @@ See the [docs](https://sendle-node.vercel.app) for usage reference.
 1. Clone this repository
 2. Install dependencies using `yarn install` or `npm install`
 3. Build the module using `yarn build` or `npm run build`
-4. Start development server using `yarn dev` or `npm run dev`
+4. Start development server using `yarn start` or `npm run start`
 
 ## 📑 License
 
