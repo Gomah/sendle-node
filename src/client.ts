@@ -1,42 +1,132 @@
-import axios, { AxiosInstance } from 'axios';
 import { Sendle } from './types';
-import { OrderResource } from './order';
+import got, { Got, Options as GotOptions } from 'got';
+import hasha from 'hasha';
+import { nanoid } from 'nanoid';
+
+/*
+ * Type aliases to support the generic request interface.
+ */
+type Method = 'get' | 'post' | 'delete';
+type QueryParams = GotOptions['searchParams'];
+
+export interface RequestParameters {
+  path: string;
+  method: Method;
+  query?: QueryParams;
+  body?: GotOptions['json'];
+  headers?: GotOptions['headers'];
+}
 
 export class SendleClient {
-  private client: AxiosInstance;
-  public orders: OrderResource;
+  #got: Got;
+  #version: string;
 
   constructor(options: Sendle.ClientOptions) {
-    const { sandbox = false, sendleId, apiKey } = options;
+    const { sandbox = false, sendleId, apiKey, gotOptions = {} } = options;
+    this.#version = require('../package.json').version;
 
-    const apiUrl = sandbox ? 'https://sandbox.sendle.com/api' : 'https://api.sendle.com/api';
+    const prefixUrl = sandbox ? 'https://sandbox.sendle.com/api/' : 'https://api.sendle.com/api/';
 
-    this.client = axios.create({
-      auth: {
-        username: sendleId,
-        password: apiKey,
+    this.#got = got.extend({
+      prefixUrl,
+      headers: {
+        'user-agent': `sendle-node/${this.#version}`,
       },
-      baseURL: apiUrl,
+      retry: 0,
+      username: sendleId,
+      password: apiKey,
+      ...gotOptions,
     });
+  }
 
-    this.orders = new OrderResource(this.client);
+  /**
+   * Sends a request.
+   *
+   * @param path
+   * @param method
+   * @param query
+   * @param body
+   * @param headers
+   * @returns
+   */
+  public async request<Response>({
+    path,
+    method,
+    query,
+    body,
+    headers = {},
+  }: RequestParameters): Promise<Response> {
+    // If the body is empty, don't send the body in the HTTP request
+    const json = body !== undefined && Object.entries(body).length === 0 ? undefined : body;
+
+    try {
+      const response = await this.#got(path, {
+        method,
+        searchParams: query,
+        json,
+        headers: {
+          ...headers,
+        },
+      }).json<Response>();
+
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async ping(): Promise<Sendle.PingResponse | never> {
-    return this.client.get<Sendle.PingResponse>('/ping').then(({ data }) => data);
+    return this.request<Sendle.PingResponse>({ path: 'ping', method: 'get' });
   }
 
   async quote(args: Sendle.QuoteArgs): Promise<Sendle.Quote | never> {
-    return this.client
-      .get<Array<Sendle.Quote>>(`/quote`, {
-        params: args,
-      })
-      .then(({ data }) => data[0]);
+    return this.request<Array<Sendle.Quote>>({
+      path: 'quote',
+      method: 'get',
+      query: args,
+    }).then((res) => res[0]);
   }
 
-  async tracking(trackingReference: string) {
-    return this.client
-      .get<Sendle.Tracking>(`/tracking/${trackingReference}`)
-      .then(({ data }) => data);
+  async tracking(trackingReference: string): Promise<Sendle.Tracking> {
+    return this.request<Sendle.Tracking>({
+      path: `tracking/${trackingReference}`,
+      method: 'get',
+    });
   }
+
+  public readonly orders = {
+    get: async (orderId: string): Promise<Sendle.Order | never> => {
+      return this.request<Sendle.Order>({ path: `orders/${orderId}`, method: 'get' });
+    },
+
+    create: async (args: Sendle.OrderArgs): Promise<Sendle.Order | never> => {
+      const { customerId, orderId } = args;
+      let { idempotencyKey } = args;
+
+      if (!idempotencyKey) {
+        idempotencyKey = customerId && orderId ? hasha(`${customerId}-${orderId}`) : nanoid();
+      }
+
+      return this.request<Sendle.Order>({
+        path: `orders`,
+        method: 'post',
+        body: args,
+        headers: {
+          'Idempotency-Key': idempotencyKey,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
+    },
+
+    /**
+     * As long as an order has not been collected by the courier, an order is cancellable.
+     * The value to review is: `is_cancellable`. If true, the order can be cancelled.
+     * If a booking has already been collected by the courier, a failure response (422) will be returned.
+     * `is_cancellable` is found in the `scheduling` section of the `JSON` along with delivery estimates.
+     */
+    cancel: async (orderId: string): Promise<Sendle.CancelledOrder | never> => {
+      return this.request<Sendle.CancelledOrder>({ path: `orders/${orderId}`, method: 'delete' });
+    },
+  };
 }

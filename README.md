@@ -36,6 +36,7 @@ const client = new SendleClient({
   sendleId: 'yourSendleId',
   apiKey: 'yourApiKey',
   sandbox: true, // default to false
+  gotOptions: {}, // See https://github.com/sindresorhus/got#api
 });
 ```
 

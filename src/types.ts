@@ -1,8 +1,10 @@
+import type { Options as GotOptions } from 'got';
 export namespace Sendle {
   export interface ClientOptions {
     sandbox?: boolean;
     sendleId: string;
     apiKey: string;
+    gotOptions?: GotOptions;
   }
 
   export interface PingResponse {
@@ -511,6 +513,8 @@ export namespace Sendle {
      * Most be one of `l` (litres), `m3` (cubic metres), in`3 (cubic inches) or `ft3` (cubic feet).
      */
     volume_units?: string;
+
+    [key: string]: string | undefined;
   }
 
   export interface Quote {
