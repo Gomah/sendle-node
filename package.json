@@ -51,21 +51,29 @@
   "size-limit": [
     {
       "path": "dist/sendle-node.cjs.production.min.js",
-      "limit": "15 KB",
+      "limit": "100 KB",
       "ignore": [
         "fs",
         "path",
         "crypto",
+        "dns",
+        "http2",
+        "tls",
+        "net",
         "worker_threads"
       ]
     },
     {
       "path": "dist/sendle-node.esm.js",
-      "limit": "15 KB",
+      "limit": "100 KB",
       "ignore": [
         "fs",
         "path",
         "crypto",
+        "dns",
+        "http2",
+        "tls",
+        "net",
         "worker_threads"
       ]
     }
@@ -86,7 +94,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "got": "^11.8.2",
+    "got": "11.8.2",
     "hasha": "5.2.2",
     "nanoid": "3.1.23"
   }
