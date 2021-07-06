@@ -61,6 +61,9 @@ app.get('/labels/:shipmentId', async (request, reply) => {
   const pdf = await sendleClient.labels.get({ orderId: shipment.orderId, size: 'cropped' });
 
   reply.type('application/pdf').code(200);
+  
+  // Uncomment the next line if you want to force pdf download:
+  // reply.header('Content-disposition', `attachment; filename=${orderId}`);
   return pdf;
 });
 ```
