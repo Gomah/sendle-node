@@ -1,7 +1,7 @@
 ---
 title: Ping
 description: 'Unofficial Node.js library for the [Sendle](https://www.sendle.com/) API.'
-position: 5
+position: 6
 category: 'Usage'
 ---
 
