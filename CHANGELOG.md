@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Gomah/sendle-node/compare/v1.0.0...v1.1.0) (2021-07-06)
+
+
+### Features
+
+* add labels to the SDK ([69830c1](https://github.com/Gomah/sendle-node/commit/69830c11c9976ec773b7f029036d118d9aaeebc8))
+
 ## [1.0.0](https://github.com/Gomah/sendle-node/compare/v0.1.5...v1.0.0) (2021-06-12)
 
 
