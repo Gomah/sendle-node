@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders should create a domestic order 1`] = `
+Object {
+  "cubic_metre_volume": null,
+  "customer_reference": "1337",
+  "description": "Test",
+  "hide_pickup_address": false,
+  "kilogram_weight": "1.0",
+  "labels": Any<Array>,
+  "metadata": Object {
+    "userId": 100,
+  },
+  "order_id": Any<String>,
+  "order_url": Any<String>,
+  "price": Object {
+    "gross": Object {
+      "amount": 21.25,
+      "currency": "AUD",
+    },
+    "net": Object {
+      "amount": 19.32,
+      "currency": "AUD",
+    },
+    "tax": Object {
+      "amount": 1.93,
+      "currency": "AUD",
+    },
+  },
+  "receiver": Object {
+    "address": Object {
+      "address_line1": "80 Wentworth Park Road",
+      "address_line2": null,
+      "country": "Australia",
+      "postcode": "0800",
+      "state_name": "NT",
+      "suburb": "Darwin",
+    },
+    "contact": Object {
+      "company": "Daily Planet",
+      "email": "clarkissuper@dailyplanet.xyz",
+      "name": "Clark Kent",
+      "phone": null,
+    },
+    "instructions": "Signature on Delivery",
+  },
+  "route": Object {
+    "description": "Sydney, Australia to Remote",
+    "type": "remote",
+  },
+  "scheduling": Object {
+    "delivered_on": null,
+    "estimated_delivery_date_maximum": Any<String>,
+    "estimated_delivery_date_minimum": Any<String>,
+    "is_cancellable": true,
+    "picked_up_on": null,
+    "pickup_date": Any<String>,
+  },
+  "sender": Object {
+    "address": Object {
+      "address_line1": "123 Gotham Ln",
+      "address_line2": null,
+      "country": "Australia",
+      "postcode": "2000",
+      "state_name": "NSW",
+      "suburb": "Sydney",
+    },
+    "contact": Object {
+      "company": null,
+      "email": "thomas@kanvi.com.au",
+      "name": "Lex Luthor",
+      "phone": null,
+      "sendle_id": "thomas_kambio_app",
+    },
+    "instructions": null,
+  },
+  "sendle_reference": Any<String>,
+  "state": "Pickup",
+  "tracking_url": Any<String>,
+  "volume": null,
+  "weight": Object {
+    "units": "kg",
+    "value": "1.0",
+  },
+}
+`;
+
+exports[`Orders should create an international order 1`] = `
+Object {
+  "contents": Object {
+    "country_of_origin": "China",
+    "currency": "AUD",
+    "description": "T-shirt",
+    "value": "20.0",
+  },
+  "cubic_metre_volume": "0.01",
+  "customer_reference": "SupBdayPressie",
+  "description": "Kryptonite",
+  "hide_pickup_address": false,
+  "kilogram_weight": "1.0",
+  "labels": Any<Array>,
+  "metadata": Object {
+    "your_data": "XYZ123",
+  },
+  "order_id": Any<String>,
+  "order_url": Any<String>,
+  "parcel_contents": Array [
+    Object {
+      "country_of_origin": "China",
+      "currency": "AUD",
+      "description": "T-shirt",
+      "hs_code": null,
+      "quantity": 1,
+      "value": "20.0",
+    },
+  ],
+  "price": Object {
+    "gross": Object {
+      "amount": 23.95,
+      "currency": "AUD",
+    },
+    "net": Object {
+      "amount": 23.95,
+      "currency": "AUD",
+    },
+    "tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+  },
+  "receiver": Object {
+    "address": Object {
+      "address_line1": "445 Mount Eden Road",
+      "address_line2": null,
+      "country": "New Zealand",
+      "postcode": "2025",
+      "state_name": null,
+      "suburb": "Auckland",
+    },
+    "contact": Object {
+      "company": null,
+      "email": "clarkissuper@dailyplanet.xyz",
+      "name": "Clark Kent",
+      "phone": null,
+    },
+    "instructions": "Give directly to Clark",
+  },
+  "route": Object {
+    "description": "Sydney, Australia to New Zealand",
+    "type": "export",
+  },
+  "scheduling": Object {
+    "delivered_on": null,
+    "estimated_delivery_date_maximum": Any<String>,
+    "estimated_delivery_date_minimum": Any<String>,
+    "is_cancellable": true,
+    "picked_up_on": null,
+    "pickup_date": Any<String>,
+  },
+  "sender": Object {
+    "address": Object {
+      "address_line1": "123 Gotham Ln",
+      "address_line2": null,
+      "country": "Australia",
+      "postcode": "2000",
+      "state_name": "NSW",
+      "suburb": "Sydney",
+    },
+    "contact": Object {
+      "company": null,
+      "email": "thomas@kanvi.com.au",
+      "name": "Lex Luthor",
+      "phone": "0412 345 678",
+      "sendle_id": "thomas_kambio_app",
+    },
+    "instructions": "Knock loudly",
+  },
+  "sendle_reference": Any<String>,
+  "state": "Pickup",
+  "tracking_url": Any<String>,
+  "volume": Object {
+    "units": "m3",
+    "value": "0.01",
+  },
+  "weight": Object {
+    "units": "kg",
+    "value": "1.0",
+  },
+}
+`;

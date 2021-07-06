@@ -50,6 +50,19 @@ describe('Orders', () => {
     trackingId = order.sendle_reference;
 
     expect(order.state).toBe('Pickup');
+
+    expect(order).toMatchSnapshot({
+      order_id: expect.any(String),
+      order_url: expect.any(String),
+      sendle_reference: expect.any(String),
+      tracking_url: expect.any(String),
+      labels: expect.any(Array),
+      scheduling: {
+        pickup_date: expect.any(String),
+        estimated_delivery_date_minimum: expect.any(String),
+        estimated_delivery_date_maximum: expect.any(String),
+      },
+    });
   });
 
   it('should create an international order', async () => {
@@ -102,7 +115,18 @@ describe('Orders', () => {
       },
     });
 
-    expect(order.state).toBe('Pickup');
+    expect(order).toMatchSnapshot({
+      order_id: expect.any(String),
+      order_url: expect.any(String),
+      sendle_reference: expect.any(String),
+      tracking_url: expect.any(String),
+      labels: expect.any(Array),
+      scheduling: {
+        pickup_date: expect.any(String),
+        estimated_delivery_date_minimum: expect.any(String),
+        estimated_delivery_date_maximum: expect.any(String),
+      },
+    });
   });
 
   it('should return tracking for my order', async () => {
@@ -113,6 +137,12 @@ describe('Orders', () => {
         country: 'AU',
       })
     );
+  });
+
+  it('should return A4 label for my order', async () => {
+    const label = await client.labels.get({ orderId });
+
+    expect(label).toContain('%PDF-1.4\n');
   });
 
   it('should cancel an order', async () => {
