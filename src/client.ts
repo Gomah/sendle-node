@@ -129,4 +129,20 @@ export class SendleClient {
       return this.request<Sendle.CancelledOrder>({ path: `orders/${orderId}`, method: 'delete' });
     },
   };
+
+  public readonly labels = {
+    get: async ({
+      orderId,
+      size = 'a4',
+      format = 'pdf',
+    }: {
+      orderId: string;
+      size?: 'a4' | 'cropped' | 'letter';
+      format?: string;
+    }): Promise<string | never> => {
+      return this.#got(`orders/${orderId}/labels/${size}.${format}`, {
+        method: 'get',
+      }).text();
+    },
+  };
 }
