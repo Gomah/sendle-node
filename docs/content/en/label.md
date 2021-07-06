@@ -16,7 +16,7 @@ Both labels are formatted as PDFs, **this option is only valid once an order has
 const orderId = 'f5233746-71d4-4b05-bf63-56f4abaed5f6';
 const size = 'a4'; // Available optins: 'a4', 'cropped' or 'letter' (US).
 
-const tracking = await client.labels.get({
+const label = await client.labels.get({
   orderId,
   size, // default 'a4'
 });
