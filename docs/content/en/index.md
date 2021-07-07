@@ -7,6 +7,7 @@ features:
   - Quotes
   - Orders (Create, View, Cancel)
   - Tracking Parcel
+  - Labels
   - Ping
   - TypeScript support
 ---
