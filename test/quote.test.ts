@@ -1,4 +1,3 @@
-import { Sendle } from '../src';
 import { client } from './helpers';
 
 describe('Quote', () => {
@@ -12,33 +11,12 @@ describe('Quote', () => {
       weight_units: 'kg',
     });
 
-    expect(quote).toEqual(
-      expect.objectContaining<Sendle.Quote>({
-        eta: {
-          date_range: expect.arrayContaining([expect.any(String)]),
-          days_range: expect.arrayContaining([expect.any(Number)]),
-          for_pickup_date: expect.any(String),
-        },
-        plan_name: expect.any(String),
-        quote: {
-          gross: {
-            amount: expect.any(Number),
-            currency: 'AUD',
-          },
-          net: {
-            amount: expect.any(Number),
-            currency: 'AUD',
-          },
-          tax: {
-            amount: expect.any(Number),
-            currency: 'AUD',
-          },
-        },
-        route: {
-          description: 'Sydney, Australia to Sydney, Australia',
-          type: 'same-city',
-        },
-      })
-    );
+    expect(quote).toMatchSnapshot({
+      eta: {
+        date_range: expect.arrayContaining([expect.any(String)]),
+        days_range: expect.arrayContaining([expect.any(Number)]),
+        for_pickup_date: expect.any(String),
+      },
+    });
   });
 });

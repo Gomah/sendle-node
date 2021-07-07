@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Orders should cancel an order 1`] = `
+Object {
+  "cancellation_message": "Cancelled by thomas_kambio_app during picking up",
+  "cancelled_at": Any<String>,
+  "customer_reference": "1337",
+  "metadata": Object {
+    "userId": 100,
+  },
+  "order_id": Any<String>,
+  "order_url": Any<String>,
+  "sendle_reference": Any<String>,
+  "state": "Cancelled",
+  "tracking_url": Any<String>,
+}
+`;
+
 exports[`Orders should create a domestic order 1`] = `
 Object {
   "cubic_metre_volume": null,
@@ -186,5 +202,29 @@ Object {
     "units": "kg",
     "value": "1.0",
   },
+}
+`;
+
+exports[`Orders should return tracking for my order 1`] = `
+Object {
+  "destination": Object {
+    "country": "AU",
+  },
+  "origin": Object {
+    "country": "AU",
+  },
+  "scheduling": Object {
+    "delivered_on": null,
+    "estimated_delivery_date_maximum": Any<String>,
+    "estimated_delivery_date_minimum": Any<String>,
+    "picked_up_on": null,
+    "pickup_date": Any<String>,
+  },
+  "state": "Pickup",
+  "status": Object {
+    "description": Any<String>,
+    "last_changed_at": Any<String>,
+  },
+  "tracking_events": Array [],
 }
 `;

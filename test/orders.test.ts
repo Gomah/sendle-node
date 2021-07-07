@@ -1,4 +1,3 @@
-import { Sendle } from '../src';
 import { client } from './helpers';
 
 let orderId: string;
@@ -48,8 +47,6 @@ describe('Orders', () => {
 
     orderId = order.order_id;
     trackingId = order.sendle_reference;
-
-    expect(order.state).toBe('Pickup');
 
     expect(order).toMatchSnapshot({
       order_id: expect.any(String),
@@ -132,11 +129,18 @@ describe('Orders', () => {
   it('should return tracking for my order', async () => {
     const tracking = await client.tracking(trackingId);
 
-    expect(tracking.destination).toEqual(
-      expect.objectContaining<Sendle.Tracking['destination']>({
-        country: 'AU',
-      })
-    );
+    expect(tracking).toMatchSnapshot({
+      scheduling: {
+        pickup_date: expect.any(String),
+        estimated_delivery_date_minimum: expect.any(String),
+        estimated_delivery_date_maximum: expect.any(String),
+      },
+
+      status: {
+        description: expect.any(String),
+        last_changed_at: expect.any(String),
+      },
+    });
   });
 
   it('should return A4 label for my order', async () => {
@@ -148,6 +152,12 @@ describe('Orders', () => {
   it('should cancel an order', async () => {
     const order = await client.orders.cancel(orderId);
 
-    expect(order.state).toBe('Cancelled');
+    expect(order).toMatchSnapshot({
+      order_id: expect.any(String),
+      cancelled_at: expect.any(String),
+      order_url: expect.any(String),
+      sendle_reference: expect.any(String),
+      tracking_url: expect.any(String),
+    });
   });
 });

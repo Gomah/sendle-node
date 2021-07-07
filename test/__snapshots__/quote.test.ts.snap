@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Quote should return a quote 1`] = `
+Object {
+  "eta": Object {
+    "date_range": ArrayContaining [
+      Any<String>,
+    ],
+    "days_range": ArrayContaining [
+      Any<Number>,
+    ],
+    "for_pickup_date": Any<String>,
+  },
+  "plan_name": "Easy",
+  "quote": Object {
+    "gross": Object {
+      "amount": 9.75,
+      "currency": "AUD",
+    },
+    "net": Object {
+      "amount": 8.86,
+      "currency": "AUD",
+    },
+    "tax": Object {
+      "amount": 0.89,
+      "currency": "AUD",
+    },
+  },
+  "route": Object {
+    "description": "Sydney, Australia to Sydney, Australia",
+    "type": "same-city",
+  },
+}
+`;
