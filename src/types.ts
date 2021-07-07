@@ -117,6 +117,29 @@ export namespace Sendle {
     };
 
     /**
+     * Information regarding the order’s delivery status and whether an order can be cancelled.
+     * Some fields return `null` depending on the state of the order.
+     *
+     * `pickup_date` is the date the courier has been requested to pick up the parcel. `picked_up_on` is the date the parcel was actually picked up.
+     * `estimated_delivery_date_minimum` and `estimated_delivery_date_maximum` can change depending on courier conditions.
+     */
+    scheduling: {
+      pickup_date: string;
+      picked_up_on: string | null;
+      delivered_on: string | null;
+      estimated_delivery_date_minimum: string;
+      estimated_delivery_date_maximum: string;
+    };
+
+    /**
+     * Extra information about order state: a user-friendly `description`, and `last_changed_at` is the date that the order changed to the current state.
+     */
+    status?: {
+      description: string;
+      last_changed_at: string;
+    };
+
+    /**
      * The destination of the parcel, this currently only shows the country.
      * If there is no destination yet, this might be blank.
      */
