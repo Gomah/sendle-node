@@ -1,7 +1,7 @@
 {
   "name": "sendle-node",
   "description": "Node.js library for the Sendle API",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -35,11 +35,10 @@
     "test": "tsdx test --env=node",
     "lint": "eslint --ext .ts src/",
     "lint:tsdx": "tsdx lint",
-    "prepare": "tsdx build --target node",
+    "prepare": "husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
-    "prepare": "husky install"
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "author": "Gomah",
   "module": "dist/sendle-node.esm.js",
