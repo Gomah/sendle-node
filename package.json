@@ -75,13 +75,13 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@size-limit/preset-small-lib": "^5.0.2",
+    "@size-limit/preset-small-lib": "^5.0.3",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^7.0.1",
     "prettier": "^2.3.2",
-    "size-limit": "^5.0.2",
+    "size-limit": "^5.0.3",
     "standard-version": "^9.3.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
@@ -90,6 +90,6 @@
   "dependencies": {
     "got": "11.8.2",
     "hasha": "5.2.2",
-    "nanoid": "3.1.24"
+    "nanoid": "3.1.25"
   }
 }
