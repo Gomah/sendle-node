@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Gomah/sendle-node/compare/v1.1.3...v1.2.0) (2021-11-02)
+
+
+### Features
+
+* add new allowed_packaging & packaging_type fields ([0ad13c5](https://github.com/Gomah/sendle-node/commit/0ad13c590372b518ad970cc7c936706490c88c70))
+
 ### [1.1.3](https://github.com/Gomah/sendle-node/compare/v1.1.2...v1.1.3) (2021-08-14)
 
 ### [1.1.2](https://github.com/Gomah/sendle-node/compare/v1.1.1...v1.1.2) (2021-08-11)
