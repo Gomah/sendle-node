@@ -62,6 +62,7 @@ You can prevent duplicate orders by using an **Idempotency Key** header with thi
   "order_id": "f5233746-71d4-4b05-bf63-56f4abaed5f6",
   "state": "Payment",
   "order_url": "https://api.sendle.com/api/orders/f5233746-71d4-4b05-bf63-56f4abaed5f6",
+  "packaging_type": "box",
   "sendle_reference": "S3ND73",
   "tracking_url": "https://track.sendle.com/tracking?ref=S3ND73",
   "labels": null,
@@ -210,6 +211,7 @@ You can prevent duplicate orders by using an **Idempotency Key** header with thi
   "order_id": "f5233746-71d4-4b05-bf63-56f4abaed5f6",
   "state": "Payment",
   "order_url": "https://api.sendle.com/api/orders/f5233746-71d4-4b05-bf63-56f4abaed5f6",
+  "packaging_type": "box",
   "sendle_reference": "S3ND73",
   "tracking_url": "https://track.sendle.com/tracking?ref=S3ND73",
   "labels": null,
@@ -312,6 +314,7 @@ Viewing an order will give you all the details associated with an existing Sendl
     "last_changed_at": "2015-11-23"
   },
   "order_url": "https://api.sendle.com/api/orders/f5233746-71d4-4b05-bf63-56f4abaed5f6",
+  "packaging_type": "box",
   "sendle_reference": "S3ND73",
   "tracking_url": "https://track.sendle.com/tracking?ref=S3ND73",
   "metadata": {
