@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Gomah/sendle-node/compare/v1.2.1...v2.0.0) (2021-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for Node 12 & use native uuid
+
+* drop support for Node 12 & use native uuid ([d334303](https://github.com/Gomah/sendle-node/commit/d334303b77bb15b2c7639e93288054062397e009))
+
 ### [1.2.1](https://github.com/Gomah/sendle-node/compare/v1.2.0...v1.2.1) (2021-11-02)
 
 ## [1.2.0](https://github.com/Gomah/sendle-node/compare/v1.1.3...v1.2.0) (2021-11-02)
