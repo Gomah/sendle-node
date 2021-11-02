@@ -72,6 +72,7 @@ The currency returned will be the relevant currency for the origin of the quote.
       "currency": "AUD"
     }
   },
+  "allowed_packaging": "any",
   "plan_name": "Premium",
   "eta": {
     "days_range": [0, 4],
@@ -133,6 +134,7 @@ const quote = await client.quote(args);
       "currency": "AUD"
     }
   },
+  "allowed_packaging": "any",
   "plan_name": "Easy",
   "eta": {
     "days_range": [12, 25],

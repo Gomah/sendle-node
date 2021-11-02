@@ -2,6 +2,7 @@
 
 exports[`Quote should return a quote 1`] = `
 Object {
+  "allowed_packaging": "any",
   "eta": Object {
     "date_range": ArrayContaining [
       Any<String>,
@@ -14,15 +15,15 @@ Object {
   "plan_name": "Easy",
   "quote": Object {
     "gross": Object {
-      "amount": 9.75,
+      "amount": 9.7,
       "currency": "AUD",
     },
     "net": Object {
-      "amount": 8.86,
+      "amount": 8.82,
       "currency": "AUD",
     },
     "tax": Object {
-      "amount": 0.89,
+      "amount": 0.88,
       "currency": "AUD",
     },
   },

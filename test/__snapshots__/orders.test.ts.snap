@@ -29,6 +29,7 @@ Object {
   },
   "order_id": Any<String>,
   "order_url": Any<String>,
+  "packaging_type": "box",
   "price": Object {
     "gross": Object {
       "amount": 21.25,
@@ -120,6 +121,7 @@ Object {
   },
   "order_id": Any<String>,
   "order_url": Any<String>,
+  "packaging_type": "box",
   "parcel_contents": Array [
     Object {
       "country_of_origin": "China",

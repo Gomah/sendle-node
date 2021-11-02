@@ -281,6 +281,8 @@ Viewing an order will give you all the details associated with an existing Sendl
   - Extra information about order state: a user-friendly `description`, and `last_changed_at` is the date that the order changed to the current state.
 - `order_url` (`String`)
   - Specific url for order queries. After booking, this url becomes the point to check for updated information (state changes), labels and any other information related to the order.
+- `packaging_type` (`String`)
+  - The packaging type in Sendle's system. e.g `box`.
 - `sendle_reference` (`String`)
   - Reference ID for a Sendle Order. References begin with an “S” and are an alphanumeric string six or more characters in length.
 - `tracking_url` (`String`)

@@ -370,6 +370,11 @@ export namespace Sendle {
     order_url: string;
 
     /**
+     * Packaging type
+     */
+    packaging_type: string;
+
+    /**
      * Extra information about order state: a user-friendly `description`, and `last_changed_at` is the date that the order changed to the current state.
      */
     status?: {
@@ -571,6 +576,11 @@ export namespace Sendle {
      * The name of the plan for which this is the price.
      */
     plan_name: string;
+
+    /**
+     * The name of the packaging supported for this quote
+     */
+    allowed_packaging: string;
 
     /**
      * Section: contains eta-relevant data
