@@ -1,5 +1,6 @@
 {
   "name": "sendle-node",
+  "sideEffects": false,
   "description": "Node.js library for the Sendle API",
   "version": "1.2.1",
   "license": "MIT",
@@ -90,7 +91,6 @@
   },
   "dependencies": {
     "got": "11.8.2",
-    "hasha": "5.2.2",
-    "nanoid": "3.1.30"
+    "hasha": "5.2.2"
   }
 }

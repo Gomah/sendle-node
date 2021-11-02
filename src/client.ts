@@ -1,7 +1,7 @@
 import { Sendle } from './types';
 import got, { Got, Options as GotOptions } from 'got';
 import hasha from 'hasha';
-import { nanoid } from 'nanoid';
+import crypto from 'crypto';
 
 /*
  * Type aliases to support the generic request interface.
@@ -104,7 +104,8 @@ export class SendleClient {
       let { idempotencyKey } = args;
 
       if (!idempotencyKey) {
-        idempotencyKey = customerId && orderId ? hasha(`${customerId}-${orderId}`) : nanoid();
+        idempotencyKey =
+          customerId && orderId ? hasha(`${customerId}-${orderId}`) : crypto.randomUUID();
       }
 
       return this.request<Sendle.Order>({
