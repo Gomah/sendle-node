@@ -36,6 +36,7 @@
     "lint": "eslint --ext .ts src/",
     "lint:tsdx": "tsdx lint",
     "prepare": "husky install",
+    "prepublishOnly": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish"
