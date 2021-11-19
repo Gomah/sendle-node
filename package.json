@@ -75,22 +75,22 @@
     }
   ],
   "devDependencies": {
-    "@commitlint/cli": "^14.1.0",
-    "@commitlint/config-conventional": "^14.1.0",
-    "@size-limit/preset-small-lib": "^6.0.4",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@size-limit/preset-small-lib": "^7.0.1",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "prettier": "^2.4.1",
-    "size-limit": "^6.0.4",
+    "size-limit": "^7.0.1",
     "standard-version": "^9.3.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.2"
   },
   "dependencies": {
-    "got": "11.8.2",
+    "got": "11.8.3",
     "hasha": "5.2.2"
   }
 }
