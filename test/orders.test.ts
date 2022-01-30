@@ -1,5 +1,4 @@
 import { client } from './helpers';
-
 let orderId: string;
 let trackingId: string;
 
@@ -64,7 +63,7 @@ describe('Orders', () => {
 
   it('should create an international order', async () => {
     const order = await client.orders.create({
-      pickup_date: '2021-11-24',
+      pickup_date: '2022-11-24',
       description: 'Kryptonite',
       weight: {
         value: '1',

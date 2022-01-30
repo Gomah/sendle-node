@@ -1,7 +1,7 @@
 import { Sendle } from './types';
 import got, { Got, Options as GotOptions } from 'got';
 import hasha from 'hasha';
-import crypto from 'crypto';
+import hyperid from 'hyperid';
 
 /*
  * Type aliases to support the generic request interface.
@@ -20,10 +20,12 @@ export interface RequestParameters {
 export class SendleClient {
   #got: Got;
   #version: string;
+  #hyperIdInstance: hyperid.Instance;
 
   constructor(options: Sendle.ClientOptions) {
     const { sandbox = false, sendleId, apiKey, gotOptions = {} } = options;
     this.#version = require('../package.json').version;
+    this.#hyperIdInstance = hyperid();
 
     const prefixUrl = sandbox ? 'https://sandbox.sendle.com/api/' : 'https://api.sendle.com/api/';
 
@@ -105,7 +107,7 @@ export class SendleClient {
 
       if (!idempotencyKey) {
         idempotencyKey =
-          customerId && orderId ? hasha(`${customerId}-${orderId}`) : crypto.randomUUID();
+          customerId && orderId ? hasha(`${customerId}-${orderId}`) : this.#hyperIdInstance();
       }
 
       return this.request<Sendle.Order>({
