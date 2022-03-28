@@ -4,5 +4,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/no-namespace': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };

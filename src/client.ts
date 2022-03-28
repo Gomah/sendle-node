@@ -134,13 +134,19 @@ export class SendleClient {
   };
 
   public readonly labels = {
+    /**
+     * Get the order label
+     */
     get: async ({
       orderId,
       size = 'a4',
       format = 'pdf',
     }: {
+      /** Order Id */
       orderId: string;
+      /** Size */
       size?: 'a4' | 'cropped' | 'letter';
+      /** Format. defaults to: 'pdf' */
       format?: string;
     }): Promise<string | never> => {
       return this.#got(`orders/${orderId}/labels/${size}.${format}`, {
