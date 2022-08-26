@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { client } from './helpers';
 let orderId: string;
 let trackingId: string;

@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`Quote should return a quote 1`] = `
-Object {
+exports[`Quote > should return a quote 1`] = `
+{
   "allowed_packaging": "any",
-  "eta": Object {
+  "eta": {
     "date_range": ArrayContaining [
       Any<String>,
     ],
@@ -13,60 +13,60 @@ Object {
     "for_pickup_date": Any<String>,
   },
   "plan_name": "Easy",
-  "price_breakdown": Object {
-    "base": Object {
+  "price_breakdown": {
+    "base": {
       "amount": 8.82,
       "currency": "AUD",
     },
-    "base_tax": Object {
+    "base_tax": {
       "amount": 0.88,
       "currency": "AUD",
     },
-    "cover": Object {
+    "cover": {
       "amount": 0,
       "currency": "AUD",
     },
-    "cover_tax": Object {
+    "cover_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount": Object {
+    "discount": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount_tax": Object {
+    "discount_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge": Object {
+    "fuel_surcharge": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge_tax": Object {
+    "fuel_surcharge_tax": {
       "amount": 0,
       "currency": "AUD",
     },
   },
-  "quote": Object {
-    "gross": Object {
+  "quote": {
+    "gross": {
       "amount": 9.7,
       "currency": "AUD",
     },
-    "net": Object {
+    "net": {
       "amount": 8.82,
       "currency": "AUD",
     },
-    "tax": Object {
+    "tax": {
       "amount": 0.88,
       "currency": "AUD",
     },
   },
-  "route": Object {
+  "route": {
     "description": "Sydney, Australia to Sydney, Australia",
     "type": "same-city",
   },
-  "tax_breakdown": Object {
-    "gst": Object {
+  "tax_breakdown": {
+    "gst": {
       "amount": 0.88,
       "currency": "AUD",
       "rate": 0.1,

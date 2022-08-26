@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "module": "dist/index.mjs",
   "repository": "https://github.com/Gomah/sendle-node",
   "homepage": "https://sendle-node.vercel.app",
   "publishConfig": {
@@ -31,10 +32,11 @@
     "trailingComma": "es5"
   },
   "scripts": {
-    "start": "dts watch",
-    "build": "dts build --target node",
-    "test": "dts test --env=node",
-    "lint": "dts lint",
+    "start": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "test:watch": "vitest --ui",
+    "test": "vitest run",
+    "lint": "eslint --ext .ts ./src ./test",
     "prepare": "husky install",
     "prepublishOnly": "yarn build",
     "size": "size-limit",
@@ -42,7 +44,6 @@
     "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "author": "Gomah",
-  "module": "dist/sendle-node.esm.js",
   "size-limit": [
     {
       "path": "dist/sendle-node.cjs.production.min.js",
@@ -96,19 +97,21 @@
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "@size-limit/preset-small-lib": "8.0.1",
+    "@swc/core": "1.2.242",
     "@tsconfig/recommended": "1.0.1",
     "@types/node": "18.7.13",
+    "@vitest/ui": "0.22.1",
     "dotenv": "16.0.1",
-    "dts-cli": "1.6.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.1",
     "prettier": "2.7.1",
     "size-limit": "8.0.1",
     "standard-version": "9.5.0",
-    "ts-jest": "28.0.8",
     "tslib": "2.4.0",
-    "typescript": "4.8.2"
+    "tsup": "6.2.2",
+    "typescript": "4.8.2",
+    "vitest": "0.22.1"
   },
   "dependencies": {
     "got": "11.8.5",

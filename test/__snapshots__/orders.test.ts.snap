@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`Orders should cancel an order 1`] = `
-Object {
+exports[`Orders > should cancel an order 1`] = `
+{
   "cancellation_message": "Cancelled by thomas_kambio_app during picking up",
   "cancelled_at": Any<String>,
   "customer_reference": "1337",
-  "metadata": Object {
+  "metadata": {
     "userId": 100,
   },
   "order_id": Any<String>,
@@ -16,70 +16,70 @@ Object {
 }
 `;
 
-exports[`Orders should create a domestic order 1`] = `
-Object {
+exports[`Orders > should create a domestic order 1`] = `
+{
   "cubic_metre_volume": null,
   "customer_reference": "1337",
   "description": "Test",
   "hide_pickup_address": false,
   "kilogram_weight": "1.0",
   "labels": Any<Array>,
-  "metadata": Object {
+  "metadata": {
     "userId": 100,
   },
   "order_id": Any<String>,
   "order_url": Any<String>,
   "packaging_type": "box",
-  "price": Object {
-    "gross": Object {
+  "price": {
+    "gross": {
       "amount": 21.25,
       "currency": "AUD",
     },
-    "net": Object {
+    "net": {
       "amount": 19.32,
       "currency": "AUD",
     },
-    "tax": Object {
+    "tax": {
       "amount": 1.93,
       "currency": "AUD",
     },
   },
-  "price_breakdown": Object {
-    "base": Object {
+  "price_breakdown": {
+    "base": {
       "amount": 19.32,
       "currency": "AUD",
     },
-    "base_tax": Object {
+    "base_tax": {
       "amount": 1.93,
       "currency": "AUD",
     },
-    "cover": Object {
+    "cover": {
       "amount": 0,
       "currency": "AUD",
     },
-    "cover_tax": Object {
+    "cover_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount": Object {
+    "discount": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount_tax": Object {
+    "discount_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge": Object {
+    "fuel_surcharge": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge_tax": Object {
+    "fuel_surcharge_tax": {
       "amount": 0,
       "currency": "AUD",
     },
   },
-  "receiver": Object {
-    "address": Object {
+  "receiver": {
+    "address": {
       "address_line1": "80 Wentworth Park Road",
       "address_line2": null,
       "country": "Australia",
@@ -87,7 +87,7 @@ Object {
       "state_name": "NT",
       "suburb": "Darwin",
     },
-    "contact": Object {
+    "contact": {
       "company": "Daily Planet",
       "email": "clarkissuper@dailyplanet.xyz",
       "name": "Clark Kent",
@@ -95,11 +95,11 @@ Object {
     },
     "instructions": "Signature on Delivery",
   },
-  "route": Object {
+  "route": {
     "description": "Sydney, Australia to Remote",
     "type": "remote",
   },
-  "scheduling": Object {
+  "scheduling": {
     "delivered_on": null,
     "estimated_delivery_date_maximum": Any<String>,
     "estimated_delivery_date_minimum": Any<String>,
@@ -107,8 +107,8 @@ Object {
     "picked_up_on": null,
     "pickup_date": Any<String>,
   },
-  "sender": Object {
-    "address": Object {
+  "sender": {
+    "address": {
       "address_line1": "123 Gotham Ln",
       "address_line2": null,
       "country": "Australia",
@@ -116,7 +116,7 @@ Object {
       "state_name": "NSW",
       "suburb": "Sydney",
     },
-    "contact": Object {
+    "contact": {
       "company": null,
       "email": "thomas@kanvi.com.au",
       "name": "Lex Luthor",
@@ -127,8 +127,8 @@ Object {
   },
   "sendle_reference": Any<String>,
   "state": "Pickup",
-  "tax_breakdown": Object {
-    "gst": Object {
+  "tax_breakdown": {
+    "gst": {
       "amount": 1.93,
       "currency": "AUD",
       "rate": 0.1,
@@ -136,16 +136,16 @@ Object {
   },
   "tracking_url": Any<String>,
   "volume": null,
-  "weight": Object {
+  "weight": {
     "units": "kg",
     "value": "1.0",
   },
 }
 `;
 
-exports[`Orders should create an international order 1`] = `
-Object {
-  "contents": Object {
+exports[`Orders > should create an international order 1`] = `
+{
+  "contents": {
     "country_of_origin": "China",
     "currency": "AUD",
     "description": "T-shirt",
@@ -157,14 +157,14 @@ Object {
   "hide_pickup_address": false,
   "kilogram_weight": "1.0",
   "labels": Any<Array>,
-  "metadata": Object {
+  "metadata": {
     "your_data": "XYZ123",
   },
   "order_id": Any<String>,
   "order_url": Any<String>,
   "packaging_type": "box",
-  "parcel_contents": Array [
-    Object {
+  "parcel_contents": [
+    {
       "country_of_origin": "China",
       "currency": "AUD",
       "description": "T-shirt",
@@ -173,56 +173,56 @@ Object {
       "value": "20.0",
     },
   ],
-  "price": Object {
-    "gross": Object {
+  "price": {
+    "gross": {
       "amount": 23.95,
       "currency": "AUD",
     },
-    "net": Object {
+    "net": {
       "amount": 23.95,
       "currency": "AUD",
     },
-    "tax": Object {
+    "tax": {
       "amount": 0,
       "currency": "AUD",
     },
   },
-  "price_breakdown": Object {
-    "base": Object {
+  "price_breakdown": {
+    "base": {
       "amount": 23.95,
       "currency": "AUD",
     },
-    "base_tax": Object {
+    "base_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "cover": Object {
+    "cover": {
       "amount": 0,
       "currency": "AUD",
     },
-    "cover_tax": Object {
+    "cover_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount": Object {
+    "discount": {
       "amount": 0,
       "currency": "AUD",
     },
-    "discount_tax": Object {
+    "discount_tax": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge": Object {
+    "fuel_surcharge": {
       "amount": 0,
       "currency": "AUD",
     },
-    "fuel_surcharge_tax": Object {
+    "fuel_surcharge_tax": {
       "amount": 0,
       "currency": "AUD",
     },
   },
-  "receiver": Object {
-    "address": Object {
+  "receiver": {
+    "address": {
       "address_line1": "445 Mount Eden Road",
       "address_line2": null,
       "country": "New Zealand",
@@ -230,7 +230,7 @@ Object {
       "state_name": null,
       "suburb": "Auckland",
     },
-    "contact": Object {
+    "contact": {
       "company": null,
       "email": "clarkissuper@dailyplanet.xyz",
       "name": "Clark Kent",
@@ -238,11 +238,11 @@ Object {
     },
     "instructions": "Give directly to Clark",
   },
-  "route": Object {
+  "route": {
     "description": "Sydney, Australia to New Zealand",
     "type": "export",
   },
-  "scheduling": Object {
+  "scheduling": {
     "delivered_on": null,
     "estimated_delivery_date_maximum": Any<String>,
     "estimated_delivery_date_minimum": Any<String>,
@@ -250,8 +250,8 @@ Object {
     "picked_up_on": null,
     "pickup_date": Any<String>,
   },
-  "sender": Object {
-    "address": Object {
+  "sender": {
+    "address": {
       "address_line1": "123 Gotham Ln",
       "address_line2": null,
       "country": "Australia",
@@ -259,7 +259,7 @@ Object {
       "state_name": "NSW",
       "suburb": "Sydney",
     },
-    "contact": Object {
+    "contact": {
       "company": null,
       "email": "thomas@kanvi.com.au",
       "name": "Lex Luthor",
@@ -271,26 +271,26 @@ Object {
   "sendle_reference": Any<String>,
   "state": "Pickup",
   "tracking_url": Any<String>,
-  "volume": Object {
+  "volume": {
     "units": "m3",
     "value": "0.01",
   },
-  "weight": Object {
+  "weight": {
     "units": "kg",
     "value": "1.0",
   },
 }
 `;
 
-exports[`Orders should return tracking for my order 1`] = `
-Object {
-  "destination": Object {
+exports[`Orders > should return tracking for my order 1`] = `
+{
+  "destination": {
     "country": "AU",
   },
-  "origin": Object {
+  "origin": {
     "country": "AU",
   },
-  "scheduling": Object {
+  "scheduling": {
     "delivered_on": null,
     "estimated_delivery_date_maximum": Any<String>,
     "estimated_delivery_date_minimum": Any<String>,
@@ -298,10 +298,10 @@ Object {
     "pickup_date": Any<String>,
   },
   "state": "Pickup",
-  "status": Object {
+  "status": {
     "description": Any<String>,
     "last_changed_at": Any<String>,
   },
-  "tracking_events": Array [],
+  "tracking_events": [],
 }
 `;

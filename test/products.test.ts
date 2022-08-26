@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { client } from './helpers';
 
 describe('Products', () => {
@@ -11,7 +12,6 @@ describe('Products', () => {
       sender_suburb: 'SYDNEY',
       weight_units: 'kg',
       weight_value: '1',
-
     });
 
     expect(products[0]).toMatchSnapshot({
