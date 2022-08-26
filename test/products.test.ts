@@ -11,6 +11,7 @@ describe('Products', () => {
       sender_suburb: 'SYDNEY',
       weight_units: 'kg',
       weight_value: '1',
+
     });
 
     expect(products[0]).toMatchSnapshot({
