@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/Gomah/sendle-node/compare/v2.0.4...v2.1.0) (2022-08-26)
+
+
+### Features
+
+* add products endpoint ([2329075](https://github.com/Gomah/sendle-node/commit/2329075d994288702bc15a9100efbfc0ed117fd4))
+
 ### [2.0.4](https://github.com/Gomah/sendle-node/compare/v2.0.3...v2.0.4) (2022-05-29)
 
 ### [2.0.3](https://github.com/Gomah/sendle-node/compare/v2.0.2...v2.0.3) (2022-03-28)
