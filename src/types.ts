@@ -404,7 +404,6 @@ export namespace Sendle {
       units: string;
     };
 
-
     /**
      * The order's dimensions.
      * Only returned if dimensions are provided during order creation.
@@ -430,7 +429,7 @@ export namespace Sendle {
        * A decimal string value detailing the height of the parcel.
        */
       height?: string;
-    }
+    };
 
     /**
      * Reference will appear on the label for parcel identification. It must be under 255 characters in length.
@@ -680,7 +679,7 @@ export namespace Sendle {
 
     weight_units: string;
 
-     /**
+    /**
      * Which shipping product to use – for example `STANDARD-PICKUP`, `STANDARD-DROPOFF`, `EXPRESS-PICKUP`.
      * When not given, this is set to the default product for your plan and the selected first mile option.
      */
@@ -754,7 +753,6 @@ export namespace Sendle {
         currency: 'AUD' | 'USD';
       };
     };
-
 
     /**
      * The name of the plan for which this is the price.
