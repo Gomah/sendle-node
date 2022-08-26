@@ -46,7 +46,7 @@
   "author": "Gomah",
   "size-limit": [
     {
-      "path": "dist/sendle-node.cjs.production.min.js",
+      "path": "dist/index.js",
       "limit": "41 KB",
       "ignore": [
         "fs",
@@ -69,7 +69,7 @@
       ]
     },
     {
-      "path": "dist/sendle-node.esm.js",
+      "path": "dist/index.mjs",
       "limit": "41 KB",
       "ignore": [
         "fs",
@@ -100,8 +100,11 @@
     "@swc/core": "1.2.242",
     "@tsconfig/recommended": "1.0.1",
     "@types/node": "18.7.13",
+    "@typescript-eslint/eslint-plugin": "5.35.1",
+    "@typescript-eslint/parser": "5.35.1",
     "@vitest/ui": "0.22.1",
     "dotenv": "16.0.1",
+    "eslint": "8.22.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.1",
@@ -118,5 +121,5 @@
     "hasha": "5.2.2",
     "hyperid": "3.0.1"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.3"
 }
