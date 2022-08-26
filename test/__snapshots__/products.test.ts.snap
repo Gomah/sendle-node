@@ -1,18 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Quote should return a quote 1`] = `
+exports[`Products should get a list of products 1`] = `
 Object {
   "allowed_packaging": "any",
   "eta": Object {
-    "date_range": ArrayContaining [
-      Any<String>,
-    ],
-    "days_range": ArrayContaining [
-      Any<Number>,
-    ],
-    "for_pickup_date": Any<String>,
+    "date_range": Any<Array>,
+    "days_range": Any<Array>,
+    "for_send_date": "2022-08-29",
   },
-  "plan_name": "Easy",
+  "plan": "Sendle Easy",
   "price_breakdown": Object {
     "base": Object {
       "amount": 8.82,
@@ -46,6 +42,12 @@ Object {
       "amount": 0,
       "currency": "AUD",
     },
+  },
+  "product": Object {
+    "code": "STANDARD-PICKUP",
+    "first_mile_option": "pickup",
+    "name": "Standard Pickup",
+    "service": "standard",
   },
   "quote": Object {
     "gross": Object {

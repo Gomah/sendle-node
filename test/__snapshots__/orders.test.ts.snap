@@ -44,6 +44,40 @@ Object {
       "currency": "AUD",
     },
   },
+  "price_breakdown": Object {
+    "base": Object {
+      "amount": 19.32,
+      "currency": "AUD",
+    },
+    "base_tax": Object {
+      "amount": 1.93,
+      "currency": "AUD",
+    },
+    "cover": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "cover_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "discount": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "discount_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "fuel_surcharge": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "fuel_surcharge_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+  },
   "receiver": Object {
     "address": Object {
       "address_line1": "80 Wentworth Park Road",
@@ -93,6 +127,13 @@ Object {
   },
   "sendle_reference": Any<String>,
   "state": "Pickup",
+  "tax_breakdown": Object {
+    "gst": Object {
+      "amount": 1.93,
+      "currency": "AUD",
+      "rate": 0.1,
+    },
+  },
   "tracking_url": Any<String>,
   "volume": null,
   "weight": Object {
@@ -142,6 +183,40 @@ Object {
       "currency": "AUD",
     },
     "tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+  },
+  "price_breakdown": Object {
+    "base": Object {
+      "amount": 23.95,
+      "currency": "AUD",
+    },
+    "base_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "cover": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "cover_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "discount": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "discount_tax": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "fuel_surcharge": Object {
+      "amount": 0,
+      "currency": "AUD",
+    },
+    "fuel_surcharge_tax": Object {
       "amount": 0,
       "currency": "AUD",
     },

@@ -133,6 +133,19 @@ export class SendleClient {
     },
   };
 
+  public readonly products = {
+    /**
+     * Get the products
+     */
+    get: async (args: Sendle.ProductArgs): Promise<Sendle.ProductResponse[] | never> => {
+      return this.request<Array<Sendle.ProductResponse>>({
+        path: 'products',
+        method: 'get',
+        query: args,
+      });
+    },
+  };
+
   public readonly labels = {
     /**
      * Get the order label

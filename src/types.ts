@@ -55,6 +55,134 @@ export namespace Sendle {
     | 'Left with Agent'
     | 'Delivery Failed';
 
+  export type Eta = {
+    /**
+     * How long delivery is likely to take expressed as a range. Always returned as an array.
+     * If there are two values, these are the min and max estimated days it will take.
+     * If only one number - it’s estimated to take about this long.
+     */
+    days_range: Array<number>;
+
+    /**
+     * Actual business dates that the eta days_range match, if pickup occurs on the given pickup_date.
+     */
+    date_range: Array<string>;
+
+    /**
+     * All etas are relevant to a given pickup-date.
+     * Sendle assumes the next available business day - and this is the pickup-date we are estimating based off.
+     */
+    for_pickup_date: string;
+  };
+
+  /**
+   * Information about the route.
+   * `description` is a human readable description of the route.
+   * `type` is a machine readable version of the route type. One of `same-city`, `national`, `remote`, or `export`
+   * `delivery_guarantee_status` only present when the account has enrolled in our 2-Day Delivery Guarantee.
+   * Values can be `eligible` or `ineligible`.
+   */
+  export type Route = {
+    description: string;
+    type: 'same-city' | 'national' | 'remote' | 'export';
+    delivery_guarantee_status?: 'eligible' | 'ineligible';
+  };
+
+  export type Product = {
+    /**
+     * Whether this product only supports ATL (Authority To Leave delivery instructions).
+     */
+    atl_only: boolean;
+
+    /**
+     * The identifier for this product. To select this product for a request, send this product code.
+     */
+    code: string;
+
+    /**
+     * A human readable name for this shipping product, which should be displayed to the user.
+     */
+    name: string;
+
+    /**
+     * Whether the parcel will be picked up by a driver or dropped off by the shipper.
+     */
+    first_mile_option: 'pickup' | 'drop off';
+
+    /**
+     * The type of service for this product, for example standard, express.
+     */
+    service: 'standard' | 'express';
+  };
+
+  /**
+   * Explains the components of the price. Elements underneath refer to different line items.
+   * These items summed equal the gross price.
+   */
+  export type PriceBreakdown = {
+    base: {
+      amount: number;
+      currency: string;
+    };
+    base_tax: {
+      amount: number;
+      currency: string;
+    };
+    cover: {
+      amount: number;
+      currency: string;
+    };
+    cover_tax: {
+      amount: number;
+      currency: string;
+    };
+    discount: {
+      amount: number;
+      currency: string;
+    };
+    discount_tax: {
+      amount: number;
+      currency: string;
+    };
+    fuel_surcharge: {
+      amount: number;
+      currency: string;
+    };
+    fuel_surcharge_tax: {
+      amount: number;
+      currency: string;
+    };
+  };
+
+  /**
+   * Explains the taxes applicable to the price.
+   */
+  export type TaxBreakdown = {
+    gst: {
+      amount: number;
+      currency: string;
+      rate: number;
+    };
+
+    /**
+     * Canadian Harmonized Sales Tax.
+     */
+    hst?: {
+      amount: number;
+      currency: string;
+      rate: number;
+    };
+
+    /**
+     * Québec Sales Tax.
+     */
+    qst?: {
+      amount: number;
+      currency: string;
+      rate: number;
+    };
+  };
+
   export interface TrackingEvent {
     /**
      * Type of scan event. Options usually are Pickup, Info, or Delivered, though there are many tracking event types explained on the table below.
@@ -234,6 +362,12 @@ export namespace Sendle {
     first_mile_option?: 'pickup' | 'drop off';
 
     /**
+     * Which shipping product to use – for example `STANDARD-PICKUP`, `STANDARD-DROPOFF`, `EXPRESS-PICKUP`.
+     * When not given, this is set to the default product for your plan and the selected first mile option.
+     */
+    product_code?: string;
+
+    /**
      * Description is used by the customer to track the parcel on Sendle Dashboard.
      * It does not show up on a label. It must be under 255 characters in length.
      */
@@ -269,6 +403,34 @@ export namespace Sendle {
        */
       units: string;
     };
+
+
+    /**
+     * The order's dimensions.
+     * Only returned if dimensions are provided during order creation.
+     */
+    dimensions?: {
+      /**
+       * The unit of measurement for the dimensions.
+       * Must be one of cm (centimetres) or in (inches).
+       */
+      units?: string;
+
+      /**
+       * A decimal string value detailing the length of the parcel.
+       */
+      length?: string;
+
+      /**
+       * A decimal string value detailing the width of the parcel.
+       */
+      width?: string;
+
+      /**
+       * A decimal string value detailing the height of the parcel.
+       */
+      height?: string;
+    }
 
     /**
      * Reference will appear on the label for parcel identification. It must be under 255 characters in length.
@@ -444,18 +606,11 @@ export namespace Sendle {
       instructions?: string;
     };
 
-    /**
-     * Information about the route.
-     * `description` is a human readable description of the route.
-     * `type` is a machine readable version of the route type. One of `same-city`, `national`, `remote`, or `export`
-     * `delivery_guarantee_status` only present when the account has enrolled in our 2-Day Delivery Guarantee.
-     * Values can be `eligible` or `ineligible`.
-     */
-    route: {
-      description: string;
-      type: 'same-city' | 'national' | 'remote' | 'export';
-      delivery_guarantee_status?: 'eligible' | 'ineligible';
-    };
+    route: Route;
+
+    price_breakdown: PriceBreakdown;
+
+    tax_breakdown: TaxBreakdown;
 
     /**
      * The amount charged for this order
@@ -525,6 +680,34 @@ export namespace Sendle {
 
     weight_units: string;
 
+     /**
+     * Which shipping product to use – for example `STANDARD-PICKUP`, `STANDARD-DROPOFF`, `EXPRESS-PICKUP`.
+     * When not given, this is set to the default product for your plan and the selected first mile option.
+     */
+    product_code?: string;
+
+    /**
+     * A decimal string value detailing the length of the parcel.
+     */
+    length_value?: string;
+
+    /**
+     * A decimal string value detailing the width of the parcel.
+     */
+    width_value?: string;
+
+    /**
+     * A decimal string value detailing the height of the parcel.
+     */
+
+    height_value?: string;
+
+    /**
+     * The unit of measurement for the dimensions.
+     * Must be one of `cm` (centimetres) or `in` (inches).
+     */
+    dimension_units?: string;
+
     /**
      * Whether the parcel will be picked up or dropped off.
      * `pickup` for parcels that are being picked up, or `drop off` for drop off (or US) parcels.
@@ -572,6 +755,7 @@ export namespace Sendle {
       };
     };
 
+
     /**
      * The name of the plan for which this is the price.
      */
@@ -582,40 +766,154 @@ export namespace Sendle {
      */
     allowed_packaging: string;
 
-    /**
-     * Section: contains eta-relevant data
-     */
-    eta: {
-      /**
-       * How long delivery is likely to take expressed as a range. Always returned as an array.
-       * If there are two values, these are the min and max estimated days it will take.
-       * If only one number - it’s estimated to take about this long.
-       */
-      days_range: Array<number>;
+    eta: Eta;
 
-      /**
-       * Actual business dates that the eta days_range match, if pickup occurs on the given pickup_date.
-       */
-      date_range: Array<string>;
+    route: Route;
 
-      /**
-       * All etas are relevant to a given pickup-date.
-       * Sendle assumes the next available business day - and this is the pickup-date we are estimating based off.
-       */
-      for_pickup_date: string;
-    };
+    price_breakdown: PriceBreakdown;
 
     /**
-     * Information about the route.
-     * `description` is a human readable description of the route.
-     * `type` is a machine readable version of the route type. One of `same-city`, `national`, `remote`, or `export`
-     * `delivery_guarantee_status` only present when the account has enrolled in our 2-Day Delivery Guarantee.
-     * Values can be `eligible` or `ineligible`.
+     * The full tax breakdown
      */
-    route: {
-      description: string;
-      type: 'same-city' | 'national' | 'remote' | 'export';
-      delivery_guarantee_status?: 'eligible' | 'ineligible';
-    };
+    tax_breakdown: TaxBreakdown;
+  }
+
+  export interface ProductArgs {
+    /**
+     * The street address for the location.
+     * Do not include the postcode, state, or suburb in this field. Best practice is to keep this under 40 chars due to label size limitations.
+     * Addresses can be split over two lines. Only this line is mandatory, and will be shown above address_line2 on the shipping label.
+     */
+    sender_address_line1?: string;
+
+    /**
+     * Second line of the street address for the location. Best practice is to keep this under 40 chars due to label size limitations.
+     */
+    sender_address_line2?: string;
+
+    /**
+     * Suburb or town of the location.
+     * This is required and must be given.
+     * In certain regions the name here is validated against the postcode, so must be valid and match.
+     * If we cannot service the area, the response will be a validation error stating it's not serviceable. If you receive an unserviceable error, you may want to check whether the location is also listed under a different name.
+     */
+    sender_suburb: string;
+
+    /**
+     * Postcode, postal code, or ZIP code of the location. For locations in Australia and the U.S. this is a four or five digit string. In Canada it's the six character postal code.
+     * If we cannot service the area, the response will be a validation error stating it's not serviceable.
+     */
+    sender_postcode: string;
+
+    /**
+     * ISO 3166-1 alpha-2 country code. For example, AU, CA, or US.
+     */
+    sender_country: string;
+
+    /**
+     * The street address for the location.
+     * Do not include the postcode, state, or suburb in this field. Best practice is to keep this under 40 chars due to label size limitations.
+     * Addresses can be split over two lines. Only this line is mandatory, and will be shown above address_line2 on the shipping label.
+     */
+    receiver_address_line1?: string;
+
+    /**
+     * Second line of the street address for the location. Best practice is to keep this under 40 chars due to label size limitations.
+     */
+    receiver_address_line2?: string;
+
+    /**
+     * Suburb or town of the location.
+     * This is required and must be given.
+     * In certain regions the name here is validated against the postcode, so must be valid and match.
+     * If we cannot service the area, the response will be a validation error stating it's not serviceable. If you receive an unserviceable error, you may want to check whether the location is also listed under a different name.
+     */
+    receiver_suburb: string;
+
+    /**
+     * Postcode, postal code, or ZIP code of the location. For locations in Australia and the U.S. this is a four or five digit string. In Canada it's the six character postal code.
+     * If we cannot service the area, the response will be a validation error stating it's not serviceable.
+     */
+    receiver_postcode: string;
+
+    /**
+     * ISO 3166-1 alpha-2 country code. For example, AU, CA, or US.
+     */
+    receiver_country: string;
+
+    /**
+     * A decimal string value detailing how heavy the parcel is.
+     */
+    weight_value: string;
+
+    /**
+     * The unit of measurement for the weight.
+     * Must be one of `kg` (kilograms), `lb` (pounds), `g` (grams) or `oz` (ounces).
+     */
+    weight_units: string;
+
+    /**
+     * A decimal string value detailing the volume of the parcel.
+     */
+    volume_value?: string;
+
+    /**
+     * The unit of measurement for the volume.
+     * Must be one of `l` (litres), `m3` (cubic metres), `in3` (cubic inches) or `ft3` (cubic feet).
+     */
+    volume_units?: string;
+
+    /**
+     * A decimal string value detailing the length of the parcel.
+     */
+    length_value?: string;
+
+    /**
+     * A decimal string value detailing the width of the parcel.
+     */
+    width_value?: string;
+
+    /**
+     * A decimal string value detailing the height of the parcel.
+     */
+
+    height_value?: string;
+
+    /**
+     * The unit of measurement for the dimensions.
+     * Must be one of `cm` (centimetres) or `in` (inches).
+     */
+    dimension_units?: string;
+
+    [key: string]: string | undefined;
+  }
+
+  export interface ProductResponse {
+    /**
+     * The amount charged.
+     */
+    quote: Quote;
+
+    /**
+     * Explains the components of the price.
+     * Elements underneath refer to different line items. These items summed equal the gross price.
+     */
+    price_breakdown: PriceBreakdown;
+
+    /**
+     * Explains the taxes applicable to the price.
+     */
+    tax_breakdown: TaxBreakdown;
+
+    /**
+     * Name of the plan this quote is for.
+     */
+    plan: string;
+
+    eta: Eta;
+
+    route: Route;
+
+    product: Product;
   }
 }
