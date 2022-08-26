@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/Gomah/sendle-node/compare/v2.1.0...v2.1.1) (2022-08-26)
+
+
+### Bug Fixes
+
+* dts lint -- fix ([28b7135](https://github.com/Gomah/sendle-node/commit/28b7135b41b8343075ad05e6a27e8166e0e35bf3))
+
 ## [2.1.0](https://github.com/Gomah/sendle-node/compare/v2.0.4...v2.1.0) (2022-08-26)
 
 
