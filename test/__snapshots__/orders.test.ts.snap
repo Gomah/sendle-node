@@ -32,15 +32,15 @@ exports[`Orders > should create a domestic order 1`] = `
   "packaging_type": "box",
   "price": {
     "gross": {
-      "amount": 21.25,
+      "amount": 22.7,
       "currency": "AUD",
     },
     "net": {
-      "amount": 19.32,
+      "amount": 20.64,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 1.93,
+      "amount": 2.06,
       "currency": "AUD",
     },
   },
@@ -70,11 +70,11 @@ exports[`Orders > should create a domestic order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": 1.32,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0,
+      "amount": 0.13,
       "currency": "AUD",
     },
   },
@@ -96,8 +96,8 @@ exports[`Orders > should create a domestic order 1`] = `
     "instructions": "Signature on Delivery",
   },
   "route": {
-    "description": "Sydney, Australia to Remote",
-    "type": "remote",
+    "description": "Sydney, Australia to Remote, Australia",
+    "type": "national",
   },
   "scheduling": {
     "delivered_on": null,
@@ -129,7 +129,7 @@ exports[`Orders > should create a domestic order 1`] = `
   "state": "Pickup",
   "tax_breakdown": {
     "gst": {
-      "amount": 1.93,
+      "amount": 2.06,
       "currency": "AUD",
       "rate": 0.1,
     },
@@ -175,11 +175,11 @@ exports[`Orders > should create an international order 1`] = `
   ],
   "price": {
     "gross": {
-      "amount": 23.95,
+      "amount": 25.59,
       "currency": "AUD",
     },
     "net": {
-      "amount": 23.95,
+      "amount": 25.59,
       "currency": "AUD",
     },
     "tax": {
@@ -213,7 +213,7 @@ exports[`Orders > should create an international order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": 1.64,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {

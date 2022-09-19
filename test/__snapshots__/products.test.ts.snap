@@ -6,7 +6,7 @@ exports[`Products > should get a list of products 1`] = `
   "eta": {
     "date_range": Any<Array>,
     "days_range": Any<Array>,
-    "for_send_date": "2022-08-29",
+    "for_send_date": "2022-09-20",
   },
   "plan": "Sendle Easy",
   "price_breakdown": {
@@ -35,11 +35,11 @@ exports[`Products > should get a list of products 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": 0.6,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0,
+      "amount": 0.06,
       "currency": "AUD",
     },
   },
@@ -51,15 +51,15 @@ exports[`Products > should get a list of products 1`] = `
   },
   "quote": {
     "gross": {
-      "amount": 9.7,
+      "amount": 10.36,
       "currency": "AUD",
     },
     "net": {
-      "amount": 8.82,
+      "amount": 9.42,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 0.88,
+      "amount": 0.94,
       "currency": "AUD",
     },
   },
@@ -69,7 +69,7 @@ exports[`Products > should get a list of products 1`] = `
   },
   "tax_breakdown": {
     "gst": {
-      "amount": 0.88,
+      "amount": 0.94,
       "currency": "AUD",
       "rate": 0.1,
     },
