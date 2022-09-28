@@ -18,6 +18,7 @@ describe('Products', () => {
       eta: {
         date_range: expect.any(Array),
         days_range: expect.any(Array),
+        for_send_date: expect.any(String)
       },
     });
   });

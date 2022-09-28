@@ -6,7 +6,7 @@ exports[`Products > should get a list of products 1`] = `
   "eta": {
     "date_range": Any<Array>,
     "days_range": Any<Array>,
-    "for_send_date": "2022-09-20",
+    "for_send_date": Any<String>,
   },
   "plan": "Sendle Easy",
   "price_breakdown": {
