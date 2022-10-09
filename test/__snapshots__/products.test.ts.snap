@@ -35,11 +35,11 @@ exports[`Products > should get a list of products 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0.6,
+      "amount": 0,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0.06,
+      "amount": 0,
       "currency": "AUD",
     },
   },
@@ -51,15 +51,15 @@ exports[`Products > should get a list of products 1`] = `
   },
   "quote": {
     "gross": {
-      "amount": 10.36,
+      "amount": 9.7,
       "currency": "AUD",
     },
     "net": {
-      "amount": 9.42,
+      "amount": 8.82,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 0.94,
+      "amount": 0.88,
       "currency": "AUD",
     },
   },
@@ -69,7 +69,7 @@ exports[`Products > should get a list of products 1`] = `
   },
   "tax_breakdown": {
     "gst": {
-      "amount": 0.94,
+      "amount": 0.88,
       "currency": "AUD",
       "rate": 0.1,
     },

@@ -32,15 +32,15 @@ exports[`Orders > should create a domestic order 1`] = `
   "packaging_type": "box",
   "price": {
     "gross": {
-      "amount": 22.7,
+      "amount": 21.25,
       "currency": "AUD",
     },
     "net": {
-      "amount": 20.64,
+      "amount": 19.32,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 2.06,
+      "amount": 1.93,
       "currency": "AUD",
     },
   },
@@ -70,11 +70,11 @@ exports[`Orders > should create a domestic order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 1.32,
+      "amount": 0,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0.13,
+      "amount": 0,
       "currency": "AUD",
     },
   },
@@ -129,7 +129,7 @@ exports[`Orders > should create a domestic order 1`] = `
   "state": "Pickup",
   "tax_breakdown": {
     "gst": {
-      "amount": 2.06,
+      "amount": 1.93,
       "currency": "AUD",
       "rate": 0.1,
     },
@@ -175,11 +175,11 @@ exports[`Orders > should create an international order 1`] = `
   ],
   "price": {
     "gross": {
-      "amount": 25.59,
+      "amount": 23.95,
       "currency": "AUD",
     },
     "net": {
-      "amount": 25.59,
+      "amount": 23.95,
       "currency": "AUD",
     },
     "tax": {
@@ -213,7 +213,7 @@ exports[`Orders > should create an international order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 1.64,
+      "amount": 0,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
