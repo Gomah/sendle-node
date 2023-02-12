@@ -32,25 +32,25 @@ exports[`Orders > should create a domestic order 1`] = `
   "packaging_type": "box",
   "price": {
     "gross": {
-      "amount": 21.25,
+      "amount": 25.87,
       "currency": "AUD",
     },
     "net": {
-      "amount": 19.32,
+      "amount": 23.52,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 1.93,
+      "amount": 2.35,
       "currency": "AUD",
     },
   },
   "price_breakdown": {
     "base": {
-      "amount": 19.32,
+      "amount": 23.52,
       "currency": "AUD",
     },
     "base_tax": {
-      "amount": 1.93,
+      "amount": 2.35,
       "currency": "AUD",
     },
     "cover": {
@@ -96,7 +96,7 @@ exports[`Orders > should create a domestic order 1`] = `
     "instructions": "Signature on Delivery",
   },
   "route": {
-    "description": "Sydney, Australia to Remote, Australia",
+    "description": "Sydney, Australia to Remote WA and NT, Australia",
     "type": "national",
   },
   "scheduling": {
@@ -129,7 +129,7 @@ exports[`Orders > should create a domestic order 1`] = `
   "state": "Pickup",
   "tax_breakdown": {
     "gst": {
-      "amount": 1.93,
+      "amount": 2.35,
       "currency": "AUD",
       "rate": 0.1,
     },
@@ -175,11 +175,11 @@ exports[`Orders > should create an international order 1`] = `
   ],
   "price": {
     "gross": {
-      "amount": 23.95,
+      "amount": 23.35,
       "currency": "AUD",
     },
     "net": {
-      "amount": 23.95,
+      "amount": 23.35,
       "currency": "AUD",
     },
     "tax": {
@@ -189,7 +189,7 @@ exports[`Orders > should create an international order 1`] = `
   },
   "price_breakdown": {
     "base": {
-      "amount": 23.95,
+      "amount": 23.35,
       "currency": "AUD",
     },
     "base_tax": {

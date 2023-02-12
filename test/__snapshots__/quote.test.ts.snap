@@ -15,11 +15,11 @@ exports[`Quote > should return a quote 1`] = `
   "plan_name": "Easy",
   "price_breakdown": {
     "base": {
-      "amount": 8.82,
+      "amount": 9.3,
       "currency": "AUD",
     },
     "base_tax": {
-      "amount": 0.88,
+      "amount": 0.93,
       "currency": "AUD",
     },
     "cover": {
@@ -49,15 +49,15 @@ exports[`Quote > should return a quote 1`] = `
   },
   "quote": {
     "gross": {
-      "amount": 9.7,
+      "amount": 10.23,
       "currency": "AUD",
     },
     "net": {
-      "amount": 8.82,
+      "amount": 9.3,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 0.88,
+      "amount": 0.93,
       "currency": "AUD",
     },
   },
@@ -67,7 +67,7 @@ exports[`Quote > should return a quote 1`] = `
   },
   "tax_breakdown": {
     "gst": {
-      "amount": 0.88,
+      "amount": 0.93,
       "currency": "AUD",
       "rate": 0.1,
     },
