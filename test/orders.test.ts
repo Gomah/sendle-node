@@ -177,6 +177,20 @@ describe('Orders', () => {
           amount: expect.any(Number),
         },
       },
+      price_breakdown: {
+        base: {
+          amount: expect.any(Number),
+        },
+        base_tax: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge_tax: {
+          amount: expect.any(Number),
+        },
+      },
     });
   });
 
