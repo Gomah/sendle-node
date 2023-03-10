@@ -12,6 +12,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "workspaces": [
+    "docs"
+  ],
   "keywords": [
     "sendle",
     "sendle-node",
