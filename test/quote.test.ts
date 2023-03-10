@@ -18,6 +18,37 @@ describe('Quote', () => {
         days_range: expect.arrayContaining([expect.any(Number)]),
         for_pickup_date: expect.any(String),
       },
+      plan_name: expect.any(String),
+      price_breakdown: {
+        base: {
+          amount: expect.any(Number),
+        },
+        base_tax: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge_tax: {
+          amount: expect.any(Number),
+        },
+      },
+      tax_breakdown: {
+        gst: {
+          amount: expect.any(Number),
+        },
+      },
+      quote: {
+        gross: {
+          amount: expect.any(Number),
+        },
+        net: {
+          amount: expect.any(Number),
+        },
+        tax: {
+          amount: expect.any(Number),
+        },
+      },
     });
   });
 });

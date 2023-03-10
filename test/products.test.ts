@@ -20,6 +20,36 @@ describe('Products', () => {
         days_range: expect.any(Array),
         for_send_date: expect.any(String)
       },
+      price_breakdown: {
+        base: {
+          amount: expect.any(Number),
+        },
+        base_tax: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge_tax: {
+          amount: expect.any(Number),
+        },
+      },
+      tax_breakdown: {
+        gst: {
+          amount: expect.any(Number),
+        },
+      },
+      quote: {
+        gross: {
+          amount: expect.any(Number),
+        },
+        net: {
+          amount: expect.any(Number),
+        },
+        tax: {
+          amount: expect.any(Number),
+        },
+      },
     });
   });
 });

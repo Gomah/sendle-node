@@ -505,6 +505,13 @@ export namespace Sendle {
        * Country names can vary between systems so it is recommended to use ISO country codes where possible.
        */
       country_of_origin: string;
+
+      /**
+       * A Harmonized System code for this item, appropriate for the destination country.
+       * Single HS tarrif code only.
+       * Must contain 6–10 digits with separating dots.
+       */
+      hs_code: string;
     };
   }
 
