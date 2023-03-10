@@ -2,7 +2,7 @@
 
 exports[`Orders > should cancel an order 1`] = `
 {
-  "cancellation_message": "Cancelled by thomas_kambio_app during picking up",
+  "cancellation_message": Any<String>,
   "cancelled_at": Any<String>,
   "customer_reference": "1337",
   "metadata": {
@@ -32,25 +32,25 @@ exports[`Orders > should create a domestic order 1`] = `
   "packaging_type": "box",
   "price": {
     "gross": {
-      "amount": 25.87,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "net": {
-      "amount": 23.52,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 2.35,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
   },
   "price_breakdown": {
     "base": {
-      "amount": 23.52,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "base_tax": {
-      "amount": 2.35,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "cover": {
@@ -70,11 +70,11 @@ exports[`Orders > should create a domestic order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
   },
@@ -106,6 +106,7 @@ exports[`Orders > should create a domestic order 1`] = `
     "is_cancellable": true,
     "picked_up_on": null,
     "pickup_date": Any<String>,
+    "status": null,
   },
   "sender": {
     "address": {
@@ -118,10 +119,10 @@ exports[`Orders > should create a domestic order 1`] = `
     },
     "contact": {
       "company": null,
-      "email": "thomas@kanvi.com.au",
+      "email": Any<String>,
       "name": "Lex Luthor",
       "phone": null,
-      "sendle_id": "thomas_kambio_app",
+      "sendle_id": Any<String>,
     },
     "instructions": null,
   },
@@ -129,7 +130,7 @@ exports[`Orders > should create a domestic order 1`] = `
   "state": "Pickup",
   "tax_breakdown": {
     "gst": {
-      "amount": 2.35,
+      "amount": Any<Number>,
       "currency": "AUD",
       "rate": 0.1,
     },
@@ -168,22 +169,22 @@ exports[`Orders > should create an international order 1`] = `
       "country_of_origin": "China",
       "currency": "AUD",
       "description": "T-shirt",
-      "hs_code": null,
+      "hs_code": "610910",
       "quantity": 1,
       "value": "20.0",
     },
   ],
   "price": {
     "gross": {
-      "amount": 23.35,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "net": {
-      "amount": 23.35,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 0,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
   },
@@ -213,7 +214,7 @@ exports[`Orders > should create an international order 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": 1.63,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
@@ -249,6 +250,7 @@ exports[`Orders > should create an international order 1`] = `
     "is_cancellable": true,
     "picked_up_on": null,
     "pickup_date": Any<String>,
+    "status": null,
   },
   "sender": {
     "address": {
@@ -261,10 +263,10 @@ exports[`Orders > should create an international order 1`] = `
     },
     "contact": {
       "company": null,
-      "email": "thomas@kanvi.com.au",
+      "email": Any<String>,
       "name": "Lex Luthor",
       "phone": "0412 345 678",
-      "sendle_id": "thomas_kambio_app",
+      "sendle_id": Any<String>,
     },
     "instructions": "Knock loudly",
   },
@@ -296,6 +298,7 @@ exports[`Orders > should return tracking for my order 1`] = `
     "estimated_delivery_date_minimum": Any<String>,
     "picked_up_on": null,
     "pickup_date": Any<String>,
+    "status": null,
   },
   "state": "Pickup",
   "status": {

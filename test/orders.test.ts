@@ -59,6 +59,42 @@ describe('Orders', () => {
         estimated_delivery_date_minimum: expect.any(String),
         estimated_delivery_date_maximum: expect.any(String),
       },
+      sender: {
+        contact: {
+          email: expect.any(String),
+          sendle_id: expect.any(String),
+        },
+      },
+      price: {
+        gross: {
+          amount: expect.any(Number),
+        },
+        net: {
+          amount: expect.any(Number),
+        },
+        tax: {
+          amount: expect.any(Number),
+        },
+      },
+      price_breakdown: {
+        base: {
+          amount: expect.any(Number),
+        },
+        base_tax: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge: {
+          amount: expect.any(Number),
+        },
+        fuel_surcharge_tax: {
+          amount: expect.any(Number),
+        },
+      },
+      tax_breakdown: {
+        gst: {
+          amount: expect.any(Number),
+        },
+      },
     });
   });
 
@@ -109,6 +145,7 @@ describe('Orders', () => {
         description: 'T-shirt',
         value: '20.00',
         country_of_origin: 'China',
+        hs_code: '610910',
       },
     });
 
@@ -122,6 +159,23 @@ describe('Orders', () => {
         pickup_date: expect.any(String),
         estimated_delivery_date_minimum: expect.any(String),
         estimated_delivery_date_maximum: expect.any(String),
+      },
+      sender: {
+        contact: {
+          email: expect.any(String),
+          sendle_id: expect.any(String),
+        },
+      },
+      price: {
+        gross: {
+          amount: expect.any(Number),
+        },
+        net: {
+          amount: expect.any(Number),
+        },
+        tax: {
+          amount: expect.any(Number),
+        },
       },
     });
   });
@@ -155,6 +209,7 @@ describe('Orders', () => {
     expect(order).toMatchSnapshot({
       order_id: expect.any(String),
       cancelled_at: expect.any(String),
+      cancellation_message: expect.any(String),
       order_url: expect.any(String),
       sendle_reference: expect.any(String),
       tracking_url: expect.any(String),

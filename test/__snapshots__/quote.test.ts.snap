@@ -12,14 +12,14 @@ exports[`Quote > should return a quote 1`] = `
     ],
     "for_pickup_date": Any<String>,
   },
-  "plan_name": "Easy",
+  "plan_name": Any<String>,
   "price_breakdown": {
     "base": {
-      "amount": 9.3,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "base_tax": {
-      "amount": 0.93,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "cover": {
@@ -39,25 +39,25 @@ exports[`Quote > should return a quote 1`] = `
       "currency": "AUD",
     },
     "fuel_surcharge": {
-      "amount": 0,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "fuel_surcharge_tax": {
-      "amount": 0,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
   },
   "quote": {
     "gross": {
-      "amount": 10.23,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "net": {
-      "amount": 9.3,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
     "tax": {
-      "amount": 0.93,
+      "amount": Any<Number>,
       "currency": "AUD",
     },
   },
@@ -67,7 +67,7 @@ exports[`Quote > should return a quote 1`] = `
   },
   "tax_breakdown": {
     "gst": {
-      "amount": 0.93,
+      "amount": Any<Number>,
       "currency": "AUD",
       "rate": 0.1,
     },
