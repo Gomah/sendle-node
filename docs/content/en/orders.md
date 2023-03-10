@@ -190,6 +190,7 @@ const order = await client.orders.create({
     description: 'T-shirt',
     value: '20.00',
     country_of_origin: 'CN',
+    hs_code: '610910',
   },
 });
 ```
@@ -261,7 +262,8 @@ You can prevent duplicate orders by using an **Idempotency Key** header with thi
   "contents": {
     "description": "T-shirt",
     "value": "20.00",
-    "country_of_origin": "China"
+    "country_of_origin": "China",
+    "hs_code": "610910"
   }
 }
 ```
@@ -290,7 +292,7 @@ Viewing an order will give you all the details associated with an existing Sendl
 - `tracking_url` (`String`)
   - The order’s public tracking page. Tracking page updates as the parcel progresses from sender to receiver. The url can be shared and viewed without a Sendle Account and contains no personal information about either party.
 - `labels` (`Array<{ format: String; size: "a4" | "cropped"; url: string }>`)
-  - Covered in detail in the [label section](https://api-doc.sendle.com/#getting-labels). After the initial order booking, this field may contain the labels or may contain null. If it contains null it means the labels are still being generated. In which case, you will need to re-fetch the order with a GET request, or use the label endpoint described in the link above.
+  - Covered in detail in the [label section](https://developers.sendle.com/reference/getting-labels). After the initial order booking, this field may contain the labels or may contain null. If it contains null it means the labels are still being generated. In which case, you will need to re-fetch the order with a GET request, or use the label endpoint described in the link above.
 - `scheduling` (`{ is_cancellable: boolean; pickup_date: string; picked_up_on: string | null; delivered_on: string | null; estimated_delivery_date_minimum: string; estimated_delivery_date_maximum: string; }`)
   - Information regarding the order’s delivery status and whether an order can be cancelled. Some fields return null depending on the state of the order.
   - `pickup_date` is the date the courier has been requested to pick up the parcel. `picked_up_on` is the date the parcel was actually picked up.
@@ -503,4 +505,4 @@ const order = await client.orders.create({
 
 As a fallback, `sendle-node` generates an unique ID using [`nanoid`](https://github.com/ai/nanoid)
 
-To learn more about Indempotency keys, visit the [Sendle API Documentation](https://api-doc.sendle.com/#idempotency-keys)
+To learn more about Indempotency keys, visit the [Sendle API Documentation](https://developers.sendle.com/reference/idempotency-keys)
