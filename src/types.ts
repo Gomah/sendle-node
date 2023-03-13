@@ -158,7 +158,7 @@ export namespace Sendle {
    * Explains the taxes applicable to the price.
    */
   export type TaxBreakdown = {
-    gst: {
+    gst?: {
       amount: number;
       currency: string;
       rate: number;
@@ -195,6 +195,12 @@ export namespace Sendle {
     scan_time: string;
 
     /**
+     * Timestamp marker for a tracking event scan, in the location the event happened.
+     * This value does not contain a timezone.
+     */
+    local_scan_time?: string;
+
+    /**
      * A short description for the tracking event.
      */
     description: string;
@@ -222,7 +228,7 @@ export namespace Sendle {
     /**
      * Some event types have a requester (eg if the customer has contacted us with an issue).
      */
-    requester: any;
+    requester?: string;
   }
 
   export interface Tracking {
@@ -283,13 +289,14 @@ export namespace Sendle {
     name: string;
 
     /**
-     * Leave this empty - it will be populated with your email based on your account.
+     * Used by Sendle to send tracking information, etc.
+     * For senders: this can only be given when sending with a reseller account and is ignored otherwise.
      */
     email?: string;
 
     /**
-     * Used to coordinate pickup if the courier is outside attempting delivery.
-     * It must be a valid Australian phone number (including area code), or fully qualified international number.
+     * Used by drivers to coordinate pickup or delivery.
+     * It must be a valid local phone number (including area code), or fully qualified international number.
      * Examples: (02) 1234 1234, +1 519 123 1234, +61 (0)4 1234 1234.
      */
     phone?: string;
@@ -333,16 +340,16 @@ export namespace Sendle {
     /**
      * Must be the origin location’s state or territory.
      * For Australia these are: ACT, NSW, NT, QLD, SA, TAS, VIC, WA, with the long-form (i.e. “Northern Territory”) also accepted.
+     * For Canada these are province/territory 2 letter representations such as ON and AB.
      * For United States these are the states 2 letter representation such as CA, NY.
      */
     state_name?: string;
 
     /**
-     * Sendle only works within Australia & the United States. If absent, Sendle assumes orders are in Australia.
+     * Preferably an ISO 3166-1 alpha-2 country code. If absent, Sendle assumes orders are in Australia.
      * String value under 255 characters in length.
-     * If included, must read “Australia” or “United States”.
      */
-    country?: 'Australia' | 'United States' | string;
+    country?: 'Australia' | 'Canada' | 'United States' | string;
   }
 
   export interface OrderArgs {
@@ -386,7 +393,7 @@ export namespace Sendle {
        * The unit of measurement for the weight.
        * Most be one of `kg` (kilograms), `g` (grams), `lb` (pounds) or `oz` (ounces).
        */
-      units: string;
+      units: 'kg' | 'g' | 'lb' | 'oz' | string;
     };
 
     /**
@@ -401,7 +408,7 @@ export namespace Sendle {
       /**
        * The unit of measurement for the volume. Most be one of l (litres), m3 (cubic metres), in3 (cubic inches) or ft3 (cubic feet).
        */
-      units: string;
+      units: 'l' | 'm3' | 'in3' | 'ft3' | string;
     };
 
     /**
@@ -413,7 +420,7 @@ export namespace Sendle {
        * The unit of measurement for the dimensions.
        * Must be one of cm (centimetres) or in (inches).
        */
-      units?: string;
+      units?: 'cm' | 'in' | string;
 
       /**
        * A decimal string value detailing the length of the parcel.
@@ -432,7 +439,8 @@ export namespace Sendle {
     };
 
     /**
-     * Reference will appear on the label for parcel identification. It must be under 255 characters in length.
+     * Extra information that will appear on the label. For pick and pack, parcel identification, or anything else.
+     * It must be under 255 characters in length.
      */
     customer_reference?: string;
 
@@ -462,7 +470,7 @@ export namespace Sendle {
 
     receiver: {
       /**
-       * Short message used as pickup instructions for courier.
+       * Short message used as delivery instructions for courier.
        * It must be under 200 chars in length, but is recommended to be under 40 chars due to label-size limitations.
        */
       instructions: string;
@@ -624,15 +632,15 @@ export namespace Sendle {
     price: {
       tax: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
       gross: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
       net: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
     };
   }
@@ -660,10 +668,10 @@ export namespace Sendle {
 
     /**
      * ISO 3166 country code.
-     * Sendle currently supports `AU` for Australia and `US` for United States.
+     * Sendle currently supports `AU` for Australia, 'CA' for Canada, and `US` for United States.
      * If no `pickup_country` is provided this will default to `AU`.
      */
-    pickup_country?: 'AU' | 'US';
+    pickup_country?: 'AU' | 'CA' | 'US';
 
     /**
      * Suburb must be real and match delivery postcode.
@@ -677,10 +685,10 @@ export namespace Sendle {
 
     /**
      * ISO 3166 country code.
-     * Sendle currently supports `AU` for Australia and `US` for United States.
+     * Sendle currently supports `AU` for Australia, 'CA' for Canada, and `US` for United States.
      * If no `pickup_country` is provided this will default to `AU`.
      */
-    delivery_country?: 'AU' | 'US';
+    delivery_country?: 'AU' | 'CA' | 'US';
 
     weight_value: string;
 
@@ -712,7 +720,7 @@ export namespace Sendle {
      * The unit of measurement for the dimensions.
      * Must be one of `cm` (centimetres) or `in` (inches).
      */
-    dimension_units?: string;
+    dimension_units?: 'cm' | 'in' | string;
 
     /**
      * Whether the parcel will be picked up or dropped off.
@@ -729,7 +737,7 @@ export namespace Sendle {
      * The unit of measurement for the volume.
      * Most be one of `l` (litres), `m3` (cubic metres), in`3 (cubic inches) or `ft3` (cubic feet).
      */
-    volume_units?: string;
+    volume_units?: 'l' | 'm3' | 'in3' | 'ft3' | string;
 
     [key: string]: string | undefined;
   }
@@ -741,7 +749,7 @@ export namespace Sendle {
        */
       gross: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
 
       /**
@@ -749,7 +757,7 @@ export namespace Sendle {
        */
       net: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
 
       /**
@@ -757,7 +765,7 @@ export namespace Sendle {
        */
       tax: {
         amount: number;
-        currency: 'AUD' | 'USD';
+        currency: 'AUD' | 'CAD' | 'USD';
       };
     };
 
@@ -855,7 +863,7 @@ export namespace Sendle {
      * The unit of measurement for the weight.
      * Must be one of `kg` (kilograms), `lb` (pounds), `g` (grams) or `oz` (ounces).
      */
-    weight_units: string;
+    weight_units: 'kg' | 'lb' | 'g' | 'oz' | string;
 
     /**
      * A decimal string value detailing the volume of the parcel.
@@ -866,7 +874,7 @@ export namespace Sendle {
      * The unit of measurement for the volume.
      * Must be one of `l` (litres), `m3` (cubic metres), `in3` (cubic inches) or `ft3` (cubic feet).
      */
-    volume_units?: string;
+    volume_units?: 'l' | 'm3' | 'in3' | 'ft3' | string;
 
     /**
      * A decimal string value detailing the length of the parcel.
@@ -888,7 +896,7 @@ export namespace Sendle {
      * The unit of measurement for the dimensions.
      * Must be one of `cm` (centimetres) or `in` (inches).
      */
-    dimension_units?: string;
+    dimension_units?: 'cm' | 'in' | string;
 
     [key: string]: string | undefined;
   }
