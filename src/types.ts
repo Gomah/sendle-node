@@ -23,6 +23,8 @@ export namespace Sendle {
    * Unable – to Book	An order which cannot be booked.
    * Lost –	An order marked as missing or lost.
    * Return – to Sender	An order which is being returned to the sender.
+   * Drop Off – Parcel has not yet been dropped off.
+   * Dropped Off – Parcel left at a drop-off location.
    */
   export type OrderState =
     | 'Booking'
@@ -33,27 +35,48 @@ export namespace Sendle {
     | 'Cancelled'
     | 'Unable to Book'
     | 'Lost'
-    | 'Return to Sender';
+    | 'Return to Sender'
+    | 'Drop Off'
+    | 'Dropped Off';
 
   /**
+   * Pickup Attempted – Driver attempted to pickup the parcel.
    * Pickup	– Parcel successfully picked up.
-   * Info –	Information received from courier.
-   * In Transit	– Parcel in transit between courier hub locations.
-   * Delivered –	Parcel successfully delivered.
+   * Dropped Off	– Parcel has been left at a drop-off location.
+   *
+   * Info –	Information about the parcel. This can come from us or the delivery partner.
+   * In Transit	– Parcel in transit between hub locations.
+   * Local Delivery	– Delivery is being handled by a local partner (e.g. a local postal service or similar).
+   * Parcel Measured	– Parcel's size has been checked.
+   *
+   * Out for Delivery	– Driver has the parcel and is taking it to be delivered.
    * Delivery Attempted –	Parcel delivery attempted, but unsuccessful.
+   * Delivered –	Parcel successfully delivered.
    * Card Left –	Parcel delivery attempted, card left for receiver to arrange collection or re-delivery where available.
    * Left with Agent –	Parcel left with agent, this will be a parcel connect location, POPStation, or similar.
+   *
+   * Unable to Deliver –	Parcel could not be delivered.
    * Delivery Failed –	Delivery failed.
+   * Damaged –	Parcel has been marked as damaged.
+   * Return	– Parcel is being returned to sender.
    */
   export type ScanEvent =
+    | 'Pickup Attempted'
     | 'Pickup'
+    | 'Dropped Off'
     | 'Info'
     | 'In Transit'
-    | 'Delivered'
+    | 'Local Delivery'
+    | 'Parcel Measured'
+    | 'Out for Delivery'
     | 'Delivery Attempted'
+    | 'Delivered'
     | 'Card Left'
     | 'Left with Agent'
-    | 'Delivery Failed';
+    | 'Unable to Deliver'
+    | 'Delivery Failed'
+    | 'Damaged'
+    | 'Return';
 
   export type Eta = {
     /**
