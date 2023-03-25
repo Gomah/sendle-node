@@ -102,20 +102,24 @@ export class SendleClient {
     },
 
     create: async (args: Sendle.OrderArgs): Promise<Sendle.Order | never> => {
-      const { customerId, orderId } = args;
-      let { idempotencyKey } = args;
-
-      if (!idempotencyKey) {
-        idempotencyKey =
-          customerId && orderId ? hasha(`${customerId}-${orderId}`) : this.#hyperIdInstance();
-      }
+      const { customerId, orderId, idempotencyKey, ...body } = args;
 
       return this.request<Sendle.Order>({
         path: `orders`,
         method: 'post',
-        body: args,
+        body: {
+          ...body,
+          metadata: {
+            customerId,
+            orderId,
+            ...body.metadata,
+          },
+        },
         headers: {
-          'Idempotency-Key': idempotencyKey,
+          'Idempotency-Key':
+            idempotencyKey || (customerId && orderId)
+              ? hasha(`${customerId}-${orderId}`)
+              : this.#hyperIdInstance(),
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
