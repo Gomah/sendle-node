@@ -118,7 +118,7 @@ export class SendleClient {
         headers: {
           'Idempotency-Key':
             idempotencyKey || (customerId && orderId)
-              ? hasha(`${customerId}-${orderId}`)
+              ? hasha(JSON.stringify(args))
               : this.#hyperIdInstance(),
           'Content-Type': 'application/json',
           Accept: 'application/json',
