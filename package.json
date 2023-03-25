@@ -42,60 +42,9 @@
     "lint": "eslint --ext .ts ./src ./test",
     "prepare": "husky install",
     "prepublishOnly": "yarn build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "author": "Gomah",
-  "size-limit": [
-    {
-      "path": "dist/index.js",
-      "limit": "41 KB",
-      "ignore": [
-        "fs",
-        "path",
-        "crypto",
-        "buffer",
-        "http",
-        "https",
-        "events",
-        "stream",
-        "dns",
-        "http2",
-        "tls",
-        "net",
-        "url",
-        "os",
-        "util",
-        "zlib",
-        "worker_threads"
-      ]
-    },
-    {
-      "path": "dist/index.mjs",
-      "limit": "41 KB",
-      "ignore": [
-        "fs",
-        "path",
-        "buffer",
-        "crypto",
-        "buffer",
-        "http",
-        "https",
-        "events",
-        "stream",
-        "dns",
-        "http2",
-        "tls",
-        "net",
-        "url",
-        "os",
-        "util",
-        "zlib",
-        "worker_threads"
-      ]
-    }
-  ],
   "devDependencies": {
     "@commitlint/cli": "17.4.4",
     "@commitlint/config-conventional": "17.4.4",
