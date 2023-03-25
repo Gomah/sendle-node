@@ -186,12 +186,14 @@ const order = await client.orders.create({
     },
     instructions: 'Give directly to Clark',
   },
-  contents: {
-    description: 'T-shirt',
-    value: '20.00',
-    country_of_origin: 'CN',
-    hs_code: '610910',
-  },
+  parcel_contents: [
+    {
+      description: 'T-shirt',
+      value: '20.00',
+      country_of_origin: 'CN',
+      hs_code: '610910',
+    },
+  ],
 });
 ```
 
@@ -259,12 +261,14 @@ You can prevent duplicate orders by using an **Idempotency Key** header with thi
     },
     "instructions": "Give directly to Clark"
   },
-  "contents": {
-    "description": "T-shirt",
-    "value": "20.00",
-    "country_of_origin": "China",
-    "hs_code": "610910"
-  }
+  "parcel_contents": [
+    {
+      "description": "T-shirt",
+      "value": "20.00",
+      "country_of_origin": "China",
+      "hs_code": "610910"
+    }
+  ]
 }
 ```
 

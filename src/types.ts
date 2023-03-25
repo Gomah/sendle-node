@@ -518,7 +518,7 @@ export namespace Sendle {
     /**
      * Description, value & country of origin must be provided when creating an international order.
      */
-    contents?: {
+    parcel_contents?: Array<{
       /**
        * Detailed description of the parcel contents for customs purposes.
        * Must be between 3 and 300 characters in length. Examples: Shoes, hat, sunglasses
@@ -543,7 +543,7 @@ export namespace Sendle {
        * Must contain 6–10 digits with separating dots.
        */
       hs_code: string;
-    };
+    }>;
   }
 
   export interface Order {

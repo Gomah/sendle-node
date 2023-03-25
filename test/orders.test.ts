@@ -141,12 +141,14 @@ describe('Orders', () => {
         },
         instructions: 'Give directly to Clark',
       },
-      contents: {
-        description: 'T-shirt',
-        value: '20.00',
-        country_of_origin: 'China',
-        hs_code: '610910',
-      },
+      parcel_contents: [
+        {
+          description: 'T-shirt',
+          value: '20.00',
+          country_of_origin: 'China',
+          hs_code: '610910',
+        },
+      ],
     });
 
     expect(order).toMatchSnapshot({
