@@ -2,7 +2,7 @@
   "name": "sendle-node",
   "sideEffects": false,
   "description": "Node.js library for the Sendle API",
-  "version": "2.1.7",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
