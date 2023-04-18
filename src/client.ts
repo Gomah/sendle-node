@@ -1,4 +1,4 @@
-import { Sendle } from './types';
+import type { Sendle } from './types.js';
 import got, { Got, Options as GotOptions } from 'got';
 import hasha from 'hasha';
 import hyperid from 'hyperid';
@@ -34,7 +34,9 @@ export class SendleClient {
       headers: {
         'user-agent': `sendle-node/${this.#version}`,
       },
-      retry: 0,
+      retry: {
+        limit: 0,
+      },
       username: sendleId,
       password: apiKey,
       ...gotOptions,
@@ -59,7 +61,7 @@ export class SendleClient {
     headers = {},
   }: RequestParameters): Promise<Response> {
     // If the body is empty, don't send the body in the HTTP request
-    const json = body !== undefined && Object.entries(body).length === 0 ? undefined : body;
+    const json = body !== undefined && Object.entries(body as any).length === 0 ? undefined : body;
 
     try {
       const response = await this.#got(path, {
