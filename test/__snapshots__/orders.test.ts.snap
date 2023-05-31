@@ -97,7 +97,7 @@ exports[`Orders > should create a domestic order 1`] = `
   },
   "route": {
     "description": "Sydney, Australia to Remote WA and NT, Australia",
-    "type": "national",
+    "type": "remote",
   },
   "scheduling": {
     "delivered_on": null,
