@@ -152,6 +152,7 @@ exports[`Orders > should create an international order 1`] = `
     "description": "T-shirt",
     "value": "20.0",
   },
+  "contents_type": null,
   "cubic_metre_volume": "0.01",
   "customer_reference": "SupBdayPressie",
   "description": "Kryptonite",

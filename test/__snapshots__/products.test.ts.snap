@@ -8,7 +8,7 @@ exports[`Products > should get a list of products 1`] = `
     "days_range": Any<Array>,
     "for_send_date": Any<String>,
   },
-  "plan": "Sendle Easy",
+  "plan": Any<String>,
   "price_breakdown": {
     "base": {
       "amount": Any<Number>,

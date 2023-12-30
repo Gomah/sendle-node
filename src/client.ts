@@ -1,6 +1,6 @@
 import type { Sendle } from './types.js';
-import got, { Got, Options as GotOptions } from 'got';
-import hasha from 'hasha';
+import got, { type Got, type Options as GotOptions } from 'got';
+import { hashSync } from 'hasha';
 import hyperid from 'hyperid';
 
 /*
@@ -120,7 +120,7 @@ export class SendleClient {
         headers: {
           'Idempotency-Key':
             idempotencyKey || (customerId && orderId)
-              ? hasha(JSON.stringify(args))
+              ? hashSync(JSON.stringify(args))
               : this.#hyperIdInstance(),
           'Content-Type': 'application/json',
           Accept: 'application/json',

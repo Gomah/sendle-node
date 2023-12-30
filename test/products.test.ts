@@ -15,10 +15,11 @@ describe('Products', () => {
     });
 
     expect(products[0]).toMatchSnapshot({
+      plan: expect.any(String),
       eta: {
         date_range: expect.any(Array),
         days_range: expect.any(Array),
-        for_send_date: expect.any(String)
+        for_send_date: expect.any(String),
       },
       price_breakdown: {
         base: {

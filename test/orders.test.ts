@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { client } from './helpers';
+import * as dateFns from 'date-fns';
 let orderId: string;
 let trackingId: string;
 
@@ -100,7 +101,12 @@ describe('Orders', () => {
 
   it('should create an international order', async () => {
     const order = await client.orders.create({
-      pickup_date: '2023-11-24',
+      pickup_date: dateFns.format(
+        dateFns.add(new Date(), {
+          days: 3,
+        }),
+        'yyyy-MM-dd'
+      ),
       description: 'Kryptonite',
       weight: {
         value: '1',
